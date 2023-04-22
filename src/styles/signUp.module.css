@@ -1,0 +1,106 @@
+.overLay{
+  height: 100vh;
+  width: 100%;
+  background-image: url('/Travel.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.mainContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:rgba(0, 0, 0, 0.6);
+  height: 100vh;
+  width: 100%;
+}
+
+.container {
+  flex-direction: column;
+  height: 500px;
+  width: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.75);
+  opacity: 0.7;
+}
+
+.innerBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.inputContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 240px;
+  margin-top: 5px;
+}
+
+.heading {
+  width: 80%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: linear-gradient(45deg, red, blue);
+   */
+   background-color: 	#87CEEB;
+  border-radius: 10px;
+  margin-top: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+}
+
+.signupButton{
+    color: white;
+    /* background-color: blue; */
+   background-color: 	#87CEEB;
+    font-weight: bold;
+    
+}
+ .signupButton:hover{
+    background-color: rgb(29, 29, 179);
+    box-shadow: 0px 0px 20px -2px rgba(0,0,0,0.50);
+ }
+
+ .login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    
+ }
+
+ .google{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+ }
+
+ .googleIcon{
+    font-weight: bold;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    color: white;
+    background-color: rgb(190, 35, 35);
+    font-size: 16px;
+    cursor: pointer;
+ }
