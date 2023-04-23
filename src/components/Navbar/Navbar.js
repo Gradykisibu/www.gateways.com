@@ -12,11 +12,14 @@ import { signOut } from "firebase/auth";
 import { useRouter } from "next/router";
 import { auth } from "@/Firebase/firebase";
 import FadeMenu from "./Menu/Menu";
+import MoonLoader from "react-spinners/MoonLoader"
 
 const Navbar = () => {
   const router = useRouter();
+  const [ loader, setLoader ] = React.useState(false)
 
   const userSignOut = () => {
+    setLoader(true)
     signOut(auth)
       .then(() => {
         router.push("/login");
@@ -24,6 +27,7 @@ const Navbar = () => {
       .catch((error) => {
         console.log(error);
       });
+      setLoader(false)
   };
 
   return (
@@ -74,7 +78,18 @@ const Navbar = () => {
         </Box>
 
         <Box className={styles.logoutbtn}>
-          <button onClick={userSignOut}>Logout</button>
+          <button onClick={userSignOut}>
+            {loader ?
+            (
+              // <MoonLoader/>
+              "loading..."
+            )
+            : 
+            (
+              "Logout"
+            )
+            }
+          </button>
         </Box>
       </Box>
 

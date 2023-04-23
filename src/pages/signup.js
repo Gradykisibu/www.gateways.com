@@ -12,7 +12,8 @@ import {
   TextField,
 } from "@mui/material";
 import Link from "next/link";
-import CircularProgress from "@mui/material/CircularProgress";
+import MoonLoader from "react-spinners/MoonLoader"
+
 
 const signup = () => {
   const router = useRouter();
@@ -24,15 +25,16 @@ const signup = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
   const [loader, setLoader] = useState(false);
+  const [ color, setColor ] = useState("#ffffff")
 
   const handleSubmit = () => {
     setLoader(true)
-    if (!values.name || !values.email || !values.password) {
+    if (!values.name || !values.email || !values.password.includes('@')) {
       setErrorMsg("All fields to be field in !");
+      setLoader(false)
       return;
-    } else {
-      router.push("/");
-    }
+    } 
+
     setErrorMsg("");
     setSubmitButtonDisabled(true);
     createUserWithEmailAndPassword(auth, values.email, values.password)
@@ -109,14 +111,19 @@ const signup = () => {
                 disabled={submitButtonDisabled}
                 onClick={handleSubmit}
               >
-                {loader ? <CircularProgress/> : "Sign Up"}
+              
+                  {loader ? (
+                    <MoonLoader
+                    size={20}
+                    color={color}
+                    />
+                  ) : (
+                    "Sign up"
+                  )}
+              
               </Button>
             </Box>
           </form>
-
-          <Box className={styles.google}>
-            <Box className={styles.googleIcon}>GOOGLE</Box>
-          </Box>
 
           <Box className={styles.login}>
             <Link href="/login">

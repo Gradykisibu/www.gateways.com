@@ -2,17 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-:root{
+:root {
   --PrimaryColor: hsl(199, 100%, 33%);
   --SecondaryColor: hsl(187, 85%, 43%);
-  --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
-  --whiteColor:hsl(0, 0%, 100%);
+  --gradientColor: linear-gradient(
+    to right,
+    hsl(187, 85%, 43%),
+    hsl(199, 100%, 33%)
+  );
+  --whiteColor: hsl(0, 0%, 100%);
   --blackColor: hsl(240, 4%, 36%);
   --textColor: hsl(240, 4%, 36%);
   --whiteColorDream: hsl(0, 0%, 93%);
@@ -22,64 +26,66 @@
   --cardBG: rgb(225, 225, 235);
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-li{
+li {
   list-style: none;
 }
 
-.section{
+.section {
   padding: 4rem 0 2rem;
 }
 
-.container{
+.container {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
 
-
-.flex{
+.flex {
   display: flex;
   align-items: center;
 }
 
-.grid{
+.grid {
   display: grid;
   align-items: center;
 }
 
-.btn{
-  padding: .6rem 1.5rem;
-  background-color:#87CEEB;
-  border-radius: 3rem;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  color: white;
-  font-weight: bold;
+.btn {
+  background: black;
+  color: hsl(0, 0%, 93%);
+  width: 80px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
-.btn Link{
+.btn Link {
   color: var(--whiteColor);
   font-weight: 500;
-  
 }
 
-.btn:hover{
-  background: var(--SecondaryColor);
+.btn:hover {
+  border: 1px solid black;
+  color: black;
+  background-color: transparent;
+  cursor: pointer;
 }
 
-img, video{
+img,
+video {
   width: 100%;
   height: auto;
 }
 
-input{
+input {
   font-size: 100%;
 }
 
-body{
+body {
   background: var(--bodyColor);
 }

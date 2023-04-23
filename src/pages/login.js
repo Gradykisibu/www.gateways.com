@@ -12,7 +12,8 @@ import {
   TextField,
 } from "@mui/material";
 import Link from "next/link";
-import CircularProgress from "@mui/material/CircularProgress";
+import MoonLoader from "react-spinners/MoonLoader"
+
 
 const login = () => {
   const router = useRouter();
@@ -24,6 +25,7 @@ const login = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
   const [loader, setLoader] = useState(false);
+  const [ color, setColor ] = useState("#ffffff")
 
   const handleSubmit = () => {
     setLoader(true);
@@ -99,17 +101,16 @@ const login = () => {
                 onClick={handleSubmit}
               >
                 {loader ? (
-                  <CircularProgress sx={{ width: "10px", height: "10px" }} />
+                  <MoonLoader
+                  size={20}
+                  color={color}
+                  />
                 ) : (
                   "Login"
                 )}
               </Button>
             </Box>
           </form>
-
-          <Box className={styles.google}>
-            <Box className={styles.googleIcon}>GOOGLE</Box>
-          </Box>
 
           <Box className={styles.login}>
             <Link href="/signup">
