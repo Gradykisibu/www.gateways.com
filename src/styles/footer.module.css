@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;1,100&display=swap");
+
+.Home {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.videoContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  object-fit: cover;
+}
+
+.HomeContentContainer {
+  height: 100%;
+  width: 100%;
+  height: max-content;
+  padding: 8rem 1.5rem 3rem;
+  display: flex;
+  row-gap: 3rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  color: white;
+  z-index: 100;
+  margin-top: -90px;
+}
+
+.textDiv {
+  margin-top: 30px;
+}
+
+.homeTitle {
+  position: relative;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.cardDivGrid {
+  border-radius: 10px;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 1000px;
+  height: 300px;
+}
+
+.input {
+  border-radius: 50px;
+  height: 40px;
+  padding: 5px;
+  border: 1px solid white;
+  padding-left: 10px;
+  background: transparent;
+  color: black;
+}
+
+.sendBtn {
+  height: 40px;
+  border-radius: 50px;
+  margin-left: 10px;
+  width: 100px;
+  background-color: black;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.whiteContainer {
+  background-color: hsl(0, 0%, 93%);
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  height: 90%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.blackContainer {
+  width: 100%;
+  height: 11%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+.logoDiv {
+  height: 100%;
+  padding-top: 40px;
+  padding-left: 20px;
+  width: 50%;
+}
+
+.textContainer {
+  flex-wrap: wrap;
+  width: 500px;
+  margin-top: 10px;
+}
+
+.icons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 30px;
+    width: 120px;
+    margin-top: 10px;
+}
+
+.categories{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    padding-top: 38px;
+    justify-content: space-evenly;
+}
+
+.agency{
+    font-size:12px;
+    margin-top: 10px;
+}
+
+.text:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    color: rgb(0, 153, 255);
+}
+@media only screen and (max-width: 943px) {
+  .cardDivGrid {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 330px;
+    height: 545px;
+  }
+
+  .whiteContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .logoDiv{
+    width: 100%;
+  }
+
+  .textContainer{
+    flex-wrap: wrap;
+    width: 300px;
+  }
+
+  .icons{
+    margin-top: 15px;
+  }
+
+  .emailContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 120px;
+    flex-direction: column;
+  }
+
+  .categories{
+    width: 100%;
+  }
+}
