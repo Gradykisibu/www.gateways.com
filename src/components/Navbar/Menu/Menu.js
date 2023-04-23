@@ -50,7 +50,7 @@ export default function FadeMenu() {
 
 
       <Menu
-      sx={{marginTop:"18px", marginLeft:"16px", borderRadius:"0px"}}
+      sx={{marginTop:"18px", marginLeft:"13px", borderRadius:"0px"}}
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}

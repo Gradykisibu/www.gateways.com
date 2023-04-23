@@ -1,0 +1,142 @@
+.Home{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.videoContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  object-fit: cover;
+}
+
+.HomeContentContainer {
+  height: 100%;
+  width: 100%;
+  height: max-content;
+  padding: 8rem 1.5rem 3rem;
+  display: flex;
+  row-gap: 3rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  color: white;
+    z-index: 100;
+    margin-top: -90px;
+}
+
+.textDiv{
+    /* padding: 2rem 0; */
+    /* border: 1px solid red; */
+    margin-top: 30px;
+}
+
+.homeTitle {
+    position: relative;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.cardDivGrid {
+  border-radius: 10px;
+  gap: 1rem;
+  padding: 2rem 1rem;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 900px;
+  height: 300px;
+}
+
+.label {
+  display: block;
+  padding-bottom: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.pricing {
+  display: flex;
+  align-items: center;
+}
+
+.total {
+  font-size: 12px;
+  padding-bottom: 10px;
+  margin-left: 4px;
+}
+
+.inputContainer {
+  height: 40px;
+  padding: 0 1rem;
+  background-color: white;
+  border-radius: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input {
+  color: black;
+  padding-left: 6px;
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.filter {
+  position: absolute;
+  margin-top: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 40px;
+  width: 100px;
+  border-radius: 50px;
+  background: white;
+  color: black;
+  font-weight: bold;
+}
+
+.filter:hover {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 943px) {
+  .cardDivGrid {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 330px;
+    height: 350px;
+    margin-top: -40px;
+  }
+
+  .filter{
+    margin-top: 465px;
+    /* margin-left: 130px; */
+  }
+
+  .dateInput{
+    width: 270px;
+  }
+
+  .priceRange{
+    width: 270px;
+  }
+
+  .HomeContentContainer{
+    margin-top: -100px;
+  }
+}

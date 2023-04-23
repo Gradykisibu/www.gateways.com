@@ -16,7 +16,7 @@
 
 .container {
   flex-direction: column;
-  height: 500px;
+  height: 400px;
   width: 400px;
   background-color: #fff;
   border-radius: 10px;
@@ -49,9 +49,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background: linear-gradient(45deg, red, blue);
-   */
-   background-color: 	#87CEEB;
+   background-color: black;
   border-radius: 10px;
   margin-top: 20px;
   color: white;
@@ -66,15 +64,21 @@
 }
 
 .signupButton{
-    color: white;
-    /* background-color: blue; */
-   background-color: 	#87CEEB;
-    font-weight: bold;
+  background: black;
+  color: hsl(0, 0%, 93%);
+  width: 80px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
     
 }
  .signupButton:hover{
-    background-color: rgb(29, 29, 179);
-    box-shadow: 0px 0px 20px -2px rgba(0,0,0,0.50);
+  border: 1px solid black;
+  color: black;
+  background-color: transparent;
+  cursor: pointer;
  }
 
  .login{
@@ -82,25 +86,12 @@
     align-items: center;
     justify-content: center;
     margin-top: 20px;
-    
  }
 
- .google{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
- }
+ @media only screen and (max-width: 414px){
+  
+  .container{
+    width: 350px;
 
- .googleIcon{
-    font-weight: bold;
-    width: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    color: white;
-    background-color: rgb(190, 35, 35);
-    font-size: 16px;
-    cursor: pointer;
+  }
  }
