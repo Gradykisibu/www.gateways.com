@@ -17,6 +17,7 @@ import MoonLoader from "react-spinners/MoonLoader"
 const Navbar = () => {
   const router = useRouter();
   const [ loader, setLoader ] = React.useState(false)
+  const [ color, setColor ] = React.useState("#ffffff")
 
   const userSignOut = () => {
     setLoader(true)
@@ -81,8 +82,10 @@ const Navbar = () => {
           <button onClick={userSignOut}>
             {loader ?
             (
-              // <MoonLoader/>
-              "loading..."
+              <MoonLoader 
+              size={20}
+              color={color}
+              />
             )
             : 
             (
