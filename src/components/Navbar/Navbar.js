@@ -52,28 +52,28 @@ const Navbar = () => {
 
         <Box className={styles.NavItem}>
           <FavoriteBorderOutlinedIcon fontSize="small" />
-          <Link href="/" className="navLink">
+          <Link href="addToFavourite" className="navLink">
             <p>Favourites</p>
           </Link>
         </Box>
 
         <Box className={styles.NavItem}>
           <ArticleOutlinedIcon />
-          <Link href="/" className="navLink">
+          <Link href="newsRoom" className="navLink">
             <p>News</p>
           </Link>
         </Box>
 
         <Box className={styles.NavItem}>
           <SupportAgentOutlinedIcon fontSize="small" />
-          <Link href="/" className="navLink">
+          <Link href="supportChat" className="navLink">
             <p>Support</p>
           </Link>
         </Box>
 
         <Box className={styles.NavItem}>
           <NotificationsOutlinedIcon />
-          <Link href="/" className="navLink">
+          <Link href="upcoming" className="navLink">
             <p>Upcoming</p>
           </Link>
         </Box>

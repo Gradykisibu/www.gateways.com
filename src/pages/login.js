@@ -40,7 +40,7 @@ const login = () => {
         .then(async (res) => {
           setSubmitButtonDisabled(false);
           const user = res.user;
-          console.log(user.email, "user")
+          // console.log(user)
           await updateProfile(user, {
             displayName: values.name,
           });

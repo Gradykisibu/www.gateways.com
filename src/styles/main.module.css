@@ -132,15 +132,16 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    width: 100px;
-    height: 40px;
+    width: 70px;
+    height: 37px;
     border-radius: 50px;
-    font-weight: bold;
     background-color: white;
     color: black;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 13px;
+    font-size: 13px;
+    cursor: pointer;
 }
 
 .favouriteIcon{
