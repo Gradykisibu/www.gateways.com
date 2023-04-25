@@ -109,20 +109,19 @@ const Footer = () => {
 
                 <Box className={styles.agency}>
                   <p className={styles.text}>
-                    <ChevronRightIcon /> Services
+                   Services
                   </p>
                   <p className={styles.text}>
-                    <ChevronRightIcon /> Insurance
+                   Insurance
                   </p>
                   <p className={styles.text}>
-                    <ChevronRightIcon /> Agency
+                   Agency
                   </p>
                   <p className={styles.text}>
-                    <ChevronRightIcon /> Tourism
+                    Tourism
                   </p>
                   <p className={styles.text}>
-                    <ChevronRightIcon /> Payment
-                    
+                    Payment
                   </p>
                 </Box>
               </Box>
@@ -131,20 +130,19 @@ const Footer = () => {
 
                 <Box className={styles.agency}>
                   <p className={styles.text}>
-                    <ChevronRightIcon /> Booking
+                    Booking
                   </p>
                   <p className={styles.text}>
-                    <ChevronRightIcon /> Rental Car
+                     Rental Car
                   </p>
                   <p className={styles.text}>
-                    <ChevronRightIcon /> Hostel World
+                    Hostel World
                   </p>
                   <p className={styles.text}>
-                    <ChevronRightIcon /> Trivago
+                     Trivago
                   </p>
                   <p className={styles.text}>
-                    <ChevronRightIcon /> TripAdvisor
-                  
+                    TripAdvisor
                   </p>
                 </Box>
               </Box>
@@ -153,20 +151,19 @@ const Footer = () => {
 
                 <Box className={styles.agency}>
                   <p className={styles.text}>
-                    <ChevronRightIcon /> North East
+                     North East
                   </p>
                   <p className={styles.text}> 
-                    <ChevronRightIcon /> Pretoria
+                      Pretoria
                   </p>
                   <p className={styles.text}>
-                    <ChevronRightIcon /> Dueban
+                      Dueban
                   </p>
                   <p className={styles.text}>
-                    <ChevronRightIcon /> CapeTown
+                     CapeTown
                   </p>
                   <p className={styles.text}>
-                    <ChevronRightIcon /> Johanessburg
-                    
+                     Johanessburg
                   </p>
                 </Box>
               </Box>
