@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect , useContext} from "react";
 import { Box } from "@mui/material";
 import styles from "../../styles/main.module.css";
 import { db } from "@/Firebase/firebase";
@@ -9,11 +9,15 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { AuthContext } from "../context/AuthContext";
+
+
 
 const Main = () => {
   const [vacationData, setVacationData] = useState([]);
   const [favourite, setFavourite] = useState(false);
-
+  const { user } = useContext(AuthContext);
+  
   useEffect(() => {
     const q = query(collection(db, "Vacations"));
     const unsub = onSnapshot(q, (querySnapshot) => {
@@ -27,6 +31,7 @@ const Main = () => {
     return () => unsub();
   }, []);
 
+  
   useEffect(() => {
     AOS.init({ duration: 2000 });
   }, []);
@@ -74,7 +79,11 @@ const Main = () => {
             onClick={() => handleSave()}
             >
               {
-                favourite ? <FavoriteIcon/> : <FavoriteBorderIcon />
+                favourite ? 
+
+                (<FavoriteIcon/>)
+                 : 
+                (<FavoriteBorderIcon/>)
               }
             </Box>
           </Box>
@@ -97,7 +106,7 @@ const Main = () => {
 
           <Box className={styles.moreinfor}>
             <p>Details</p>
-            <ContentPasteIcon fontSize="small" />
+            <ContentPasteIcon fontSize="10px" />
           </Box>
         </Box>
          )

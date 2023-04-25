@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../styles/signUp.module.css";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { auth } from "@/Firebase/firebase";
 import { useRouter } from "next/router";
 import {
@@ -13,7 +13,6 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import MoonLoader from "react-spinners/MoonLoader"
-
 
 const signup = () => {
   const router = useRouter();
@@ -29,7 +28,7 @@ const signup = () => {
 
   const handleSubmit = () => {
     setLoader(true)
-    if (!values.name || !values.email || !values.password.includes('@')) {
+    if (!values.name || !values.email) {
       setErrorMsg("All fields to be field in !");
       setLoader(false)
       return;
@@ -44,12 +43,15 @@ const signup = () => {
         await updateProfile(user, {
           displayName: values.name,
         });
+        router.push('/')
       })
       .catch((err) => {
         setErrorMsg(err.message);
       });
     setLoader(false)
   };
+
+
   return (
     <Box className={styles.overLay}>
       <Box className={styles.mainContainer}>
