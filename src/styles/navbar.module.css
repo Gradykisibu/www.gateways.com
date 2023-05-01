@@ -87,3 +87,9 @@
       display: none;
     }
   }
+
+.addToFavourite{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

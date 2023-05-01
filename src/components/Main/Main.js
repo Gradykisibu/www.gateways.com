@@ -4,17 +4,16 @@ import styles from "../../styles/main.module.css";
 import { db } from "@/Firebase/firebase";
 import { query, collection, onSnapshot, doc } from "firebase/firestore";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Link from "next/link";
 import InfoIcon from '@mui/icons-material/Info';
-
+import FavoriteContext from "../context/FavouriteContext";
 
 const Main = () => {
   const [vacationData, setVacationData] = useState([]);
   const [favourite, setFavourite] = useState(false);
+  const {addToFavourite} = useContext(FavoriteContext)
 
   useEffect(() => {
     const q = query(collection(db, "Vacations"));
@@ -24,19 +23,11 @@ const Main = () => {
         vacationsArray.push({ ...doc.data() });
       });
       setVacationData(vacationsArray);
-      console.log(vacationData, "data");
     });
     return () => unsub();
   }, []);
 
-  useEffect(() => {
-    AOS.init({ duration: 2000 });
-  }, []);
-
-  const handleSave = () => {
-    console.log("Favourite");
-    setFavourite(true);
-  };
+  
 
   return (
     <Box>
@@ -50,9 +41,6 @@ const Main = () => {
             <Box
               className={styles.singleDestination}
               key={vacation.id}
-              data-aos="fade-up"
-              data-aos-easing="linear"
-              data-aos-duration="1500"
             >
               <Box className={styles.imageDiv}>
                 <img
@@ -74,9 +62,18 @@ const Main = () => {
                 <Box className={styles.moreinfor}>
                   <Box
                   className={styles.favouriteIcon}
-                  onClick={() => handleSave()}
+                  onClick={() => {addToFavourite(vacation), setFavourite(true)}}
                 >
-                  {favourite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                  {
+                  favourite ? 
+                  (
+                  <FavoriteIcon />
+                  ) 
+                  : 
+                  (
+                  <FavoriteBorderIcon/>
+                  )
+                  }
                 </Box>
 
                 <Box>
