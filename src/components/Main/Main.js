@@ -69,16 +69,7 @@ const Main = () => {
                   className={styles.favouriteIcon}
                   onClick={() => {addToFavourite(vacation), setFavourite(true)}}
                 >
-                  {
-                  favourite ? 
-                  (
                   <FavoriteIcon />
-                  ) 
-                  : 
-                  (
-                  <FavoriteBorderIcon/>
-                  )
-                  }
                 </Box>
 
                 <Box>

@@ -8,7 +8,7 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import SupportAgentOutlinedIcon from "@mui/icons-material/SupportAgentOutlined";
 import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
-import { signOut } from "firebase/auth";
+import { signOut, onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "next/router";
 import { auth } from "@/Firebase/firebase";
 import FadeMenu from "./Menu/Menu";
@@ -19,6 +19,7 @@ const Navbar = () => {
   const router = useRouter();
   const [loader, setLoader] = React.useState(false);
   const [color, setColor] = React.useState("#ffffff");
+  const [user, setUser] = React.useState({});
   const { favouriteItem, showHideFavourite } = useContext(FavoriteContext);
 
   const userSignOut = () => {
@@ -32,6 +33,12 @@ const Navbar = () => {
       });
     setLoader(false);
   };
+
+  React.useEffect(() => {
+    onAuthStateChanged(auth, (data) => {
+      setUser(data);
+    });
+  }, []);
 
   return (
     <Box className={styles.header}>
@@ -66,8 +73,8 @@ const Navbar = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color:"white",
-                  background:"red"
+                  color: "white",
+                  background: "red",
                 }}
               >
                 <span>{favouriteItem.length}</span>
@@ -112,9 +119,17 @@ const Navbar = () => {
         </Box>
 
         <Box className={styles.logoutbtn}>
-          <button onClick={userSignOut}>
-            {loader ? <MoonLoader size={20} color={color} /> : "Logout"}
-          </button>
+          {user ? (
+            <button onClick={userSignOut}>
+              {loader ? <MoonLoader size={20} color={color} /> : "Logout"}
+            </button>
+          ) : (
+            <Link href="login">
+            <button>
+              {loader ? <MoonLoader size={20} color={color} /> : "Login"}
+            </button>
+            </Link>
+          )}
         </Box>
       </Box>
 
