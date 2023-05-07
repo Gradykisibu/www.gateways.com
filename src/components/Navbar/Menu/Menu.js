@@ -73,7 +73,7 @@ export default function FadeMenu() {
             </Box>
 
             <Box className={styles.Text}>
-            <Link href="/" className="navLink">
+            <Link href="/addToFavourite" className="navLink">
               <p>Favourites</p>
             </Link>
             </Box>
@@ -85,7 +85,7 @@ export default function FadeMenu() {
             </Box>
 
             <Box className={styles.Text}>
-            <Link href="/" className="navLink">
+            <Link href="/newsRoom" className="navLink">
               <p>News</p>
             </Link>
             </Box>
@@ -97,7 +97,7 @@ export default function FadeMenu() {
             </Box>
 
             <Box className={styles.Text}>
-            <Link href="/" className="navLink">
+            <Link href="/supportChat" className="navLink">
               <p>Support</p>
             </Link>
             </Box>
@@ -109,7 +109,7 @@ export default function FadeMenu() {
             </Box>
 
             <Box className={styles.Text}>
-            <Link href="/" className="navLink">
+            <Link href="/upcoming" className="navLink">
               <p>Upcoming</p>
             </Link>
             </Box>
