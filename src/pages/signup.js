@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import styles from "../styles/signUp.module.css";
-import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth } from "@/Firebase/firebase";
 import { useRouter } from "next/router";
-import {
-  Box,
-  Button,
-  FormControl,
-  FormLabel,
-  Input,
-  TextField,
-} from "@mui/material";
+import { Box, Button, FormControl, FormLabel, TextField } from "@mui/material";
 import Link from "next/link";
-import MoonLoader from "react-spinners/MoonLoader"
+import MoonLoader from "react-spinners/MoonLoader";
 
 const signup = () => {
   const router = useRouter();
@@ -24,15 +22,15 @@ const signup = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
   const [loader, setLoader] = useState(false);
-  const [ color, setColor ] = useState("#ffffff")
+  const [color, setColor] = useState("#ffffff");
 
   const handleSubmit = () => {
-    setLoader(true)
+    setLoader(true);
     if (!values.name || !values.email) {
       setErrorMsg("All fields to be field in !");
-      setLoader(false)
+      setLoader(false);
       return;
-    } 
+    }
 
     setErrorMsg("");
     setSubmitButtonDisabled(true);
@@ -43,14 +41,27 @@ const signup = () => {
         await updateProfile(user, {
           displayName: values.name,
         });
-        router.push('/')
+        router.push("/");
       })
       .catch((err) => {
         setErrorMsg(err.message);
       });
-    setLoader(false)
+    setLoader(false);
   };
 
+  const provider = new GoogleAuthProvider();
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // const credential = GoogleAuthProvider.credentialFromResult(result);
+        const user = result.user;
+        router.push("/");
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <Box className={styles.overLay}>
@@ -108,24 +119,46 @@ const signup = () => {
 
             <Box className={styles.footer}>
               <p style={{ color: "red" }}>{errorMsg}</p>
-              <Button
+              <button
+                style={{ borderRadius: "5px" }}
                 className={styles.signupButton}
                 disabled={submitButtonDisabled}
                 onClick={handleSubmit}
               >
-              
-                  {loader ? (
-                    <MoonLoader
-                    size={20}
-                    color={color}
-                    />
-                  ) : (
-                    "Sign up"
-                  )}
-              
-              </Button>
+                {loader ? <MoonLoader size={20} color={color} /> : "Sign up"}
+              </button>
             </Box>
           </form>
+          <Box
+            sx={{
+              marginTop: "10px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <p>OR</p>
+          </Box>
+          <Box
+            sx={{
+              marginTop: "10px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <button
+              style={{
+                background: "red",
+                width: "200px",
+                color: "white",
+                borderRadius: "5px",
+              }}
+              onClick={signInWithGoogle}
+            >
+              Google
+            </button>
+          </Box>
 
           <Box className={styles.login}>
             <Link href="/login">

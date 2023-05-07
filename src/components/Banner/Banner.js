@@ -4,10 +4,14 @@ import styles from "../../styles/banner.module.css";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import FilterListOutlinedIcon from '@mui/icons-material/FilterListOutlined';
 import FlightTakeoffOutlinedIcon from '@mui/icons-material/FlightTakeoffOutlined';
+import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
 
 const Banner = () => {
 
   const [ price, setPrice ] = React.useState();
+  const { setSearchFilter } = useContext(AuthContext);
+
 
   return (
     <Box className={styles.Home}>
@@ -31,19 +35,10 @@ const Banner = () => {
               Search for location:
             </label>
             <Box className={styles.inputContainer}>
-              <input className={styles.input} type="text" placeholder="Enter name here..." />
+              <input className={styles.input} onChange={(e) => setSearchFilter(e.target.value)} type="text" placeholder="Enter name here..." />
               <Box sx={{color:"black"}}>
               <LocationOnOutlinedIcon fontSize="medium"/>
               </Box>
-            </Box>
-          </Box>
-
-          <Box className={styles.dateInput}>
-            <label className={styles.label} htmlFor="date">
-              Select your date:
-            </label>
-            <Box className={styles.inputContainer}>
-              <input className={styles.input} type="date" />
             </Box>
           </Box>
 
@@ -56,7 +51,7 @@ const Banner = () => {
             </Box>
 
             <Box className={styles.inputContainer}>
-              <input onChange={(e) => setPrice(e.target.value)} className={styles.input} type="range" max="5000" min="1000" />
+              <input onChange={(e) => setPrice(e.target.value)} className={styles.input} type="range" max="5000" min="1000" style={{width:"250px"}}/>
             </Box>
           </Box>
         </Box>

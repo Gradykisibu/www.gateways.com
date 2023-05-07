@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../styles/signUp.module.css";
-import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "@/Firebase/firebase";
 import { useRouter } from "next/router";
 import {
@@ -12,8 +12,7 @@ import {
   TextField,
 } from "@mui/material";
 import Link from "next/link";
-import MoonLoader from "react-spinners/MoonLoader"
-
+import MoonLoader from "react-spinners/MoonLoader";
 
 const login = () => {
   const router = useRouter();
@@ -25,31 +24,45 @@ const login = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
   const [loader, setLoader] = useState(false);
-  const [ color, setColor ] = useState("#ffffff")
+  const [color, setColor] = useState("#ffffff");
 
   const handleSubmit = () => {
     setLoader(true);
     if (!values.email || !values.password || !values.email.includes("@")) {
       setErrorMsg("All fields to be field in !");
       return;
-    } 
+    }
 
-      setErrorMsg("");
-      setSubmitButtonDisabled(true);
-      signInWithEmailAndPassword(auth, values.email, values.password)
-        .then(async (res) => {
-          setSubmitButtonDisabled(false);
-          const user = res.user;
-          // console.log(user)
-          await updateProfile(user, {
-            displayName: values.name,
-          });
-          router.push("/");
-          setLoader(false);
-        })
-        .catch((err) => {
-          setErrorMsg(err.message);
+    setErrorMsg("");
+    setSubmitButtonDisabled(true);
+    signInWithEmailAndPassword(auth, values.email, values.password)
+      .then(async (res) => {
+        setSubmitButtonDisabled(false);
+        const user = res.user;
+        // console.log(user)
+        await updateProfile(user, {
+          displayName: values.name,
         });
+        router.push("/");
+        setLoader(false);
+      })
+      .catch((err) => {
+        setErrorMsg(err.message);
+      });
+  };
+
+  const provider = new GoogleAuthProvider();
+  const loginInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // const credential = GoogleAuthProvider.credentialFromResult(result);
+        const user = result.user;
+        router.push("/");
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -100,17 +113,41 @@ const login = () => {
                 disabled={submitButtonDisabled}
                 onClick={handleSubmit}
               >
-                {loader ? (
-                  <MoonLoader
-                  size={20}
-                  color={color}
-                  />
-                ) : (
-                  "Login"
-                )}
+                {loader ? <MoonLoader size={20} color={color} /> : "Login"}
               </Button>
             </Box>
           </form>
+
+          <Box
+            sx={{
+              marginTop: "10px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <p>OR</p>
+          </Box>
+          <Box
+            sx={{
+              marginTop: "10px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <button
+              style={{
+                background: "red",
+                width: "200px",
+                color: "white",
+                borderRadius: "5px",
+              }}
+              onClick={loginInWithGoogle}
+            >
+              Google
+            </button>
+          </Box>
 
           <Box className={styles.login}>
             <Link href="/signup">

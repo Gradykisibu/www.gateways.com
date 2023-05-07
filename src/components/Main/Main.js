@@ -9,11 +9,13 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import Link from "next/link";
 import InfoIcon from '@mui/icons-material/Info';
 import FavoriteContext from "../context/FavouriteContext";
+import { AuthContext } from "../context/AuthContext";
 
 const Main = () => {
   const [vacationData, setVacationData] = useState([]);
   const [favourite, setFavourite] = useState(false);
-  const {addToFavourite} = useContext(FavoriteContext)
+  const {addToFavourite} = useContext(FavoriteContext);
+  const { searchFilter } = useContext(AuthContext);
 
   useEffect(() => {
     const q = query(collection(db, "Vacations"));
@@ -27,7 +29,6 @@ const Main = () => {
     return () => unsub();
   }, []);
 
-  
 
   return (
     <Box>
@@ -36,7 +37,11 @@ const Main = () => {
       </Box>
 
       <Box className={styles.cardContainer}>
-        {vacationData.map((vacation) => {
+        {vacationData.filter((vacation) => {
+          return searchFilter.toLowerCase() === ''
+          ? vacation
+          : vacation.destTitle.toLowerCase().includes(searchFilter)
+        }).map((vacation) => {
           return (
             <Box
               className={styles.singleDestination}

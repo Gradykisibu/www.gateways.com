@@ -7,6 +7,7 @@ export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  const [ searchFilter, setSearchFilter ] = useState("");
 
   useEffect(() => {
    onAuthStateChanged(auth, (data) => {
@@ -16,7 +17,9 @@ export const AuthProvider = ({ children }) => {
 
 const payload = {
     user,
-    setUser
+    setUser,
+    searchFilter, 
+    setSearchFilter
 }
 
   return (

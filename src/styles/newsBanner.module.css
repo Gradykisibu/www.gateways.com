@@ -1,0 +1,169 @@
+.mainContainer{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.innerContainer{
+    border: 1px solid black;
+    width: 100%;
+    height: 95px;
+}
+
+.newsSection{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.weather{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+.postedNews{
+    width: 70%;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.suggestedNews{
+    width: 27%;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.header{
+    border: 1px solid black;
+    height: 50px;
+    flex-wrap: wrap;
+    padding-left: 10px;
+    font-weight: lighter;
+}
+
+.news{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 410px;
+    height: 200px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    flex-wrap: wrap;
+}
+
+
+.leftinnerCard{
+   color: white;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    font-weight: lighter;
+}
+
+.rightinnerCard{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sideCard{
+    border: 1px solid black;
+    width: 95%;
+    height: 410px;
+}
+
+.dailySun{
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 1303px) {
+    .suggestedNews{
+        display: none;
+    }
+
+    .postedNews{
+        width: 100%;
+    }
+
+    .card{
+        width: 550px;
+    }
+
+    .news{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .innerContainer{
+        height: 150px;
+    }
+
+    .weather{
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 532px){
+    .header{
+        height:80px ;
+    }
+}
+
+@media only screen and (max-width: 614px){
+    .leftinnerCard{
+        flex-wrap: wrap;
+        height: 180px;
+    }
+    .rightinnerCard{
+        flex-wrap: wrap;
+        height: 200px;
+    }
+
+    .card{
+        width: auto;
+        height: 200px;
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width:382px){
+    .dailySun{
+        font-size: 30px;
+    }
+}
