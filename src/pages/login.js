@@ -14,7 +14,9 @@ import {
 import Link from "next/link";
 import MoonLoader from "react-spinners/MoonLoader";
 
+
 const login = () => {
+  const googleLogo = "https://www.jigsawplanet.com/John1333/Google-G-Logo-svg?rc=face";
   const router = useRouter();
   const [values, setValues] = useState({
     name: "",
@@ -48,6 +50,8 @@ const login = () => {
       })
       .catch((err) => {
         setErrorMsg(err.message);
+        setLoader(false);
+
       });
   };
 
@@ -138,14 +142,21 @@ const login = () => {
           >
             <button
               style={{
-                background: "red",
+                background: "black",
                 width: "200px",
                 color: "white",
+                height:"35px",
                 borderRadius: "5px",
+                paddingLeft:"20px",
+                textTransform:"uppercase",
+                display:"flex",
+                alignItems:"center",
+                justifyContent:"space-evenly",
               }}
               onClick={loginInWithGoogle}
             >
-              Google
+              <img src={googleLogo} style={{ width:"20px", height:"20px"}}/>
+             <p style={{ fontSize:"12px", fontWeight:"bold"}}> login with google</p>
             </button>
           </Box>
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box } from "@mui/material";
 import AirlinesIcon from "@mui/icons-material/Airlines";
 import CloudOutlinedIcon from "@mui/icons-material/CloudOutlined";
@@ -11,8 +11,8 @@ import Link from "next/link";
 
 
 const NewsBanner = () => {
-  const [time, setTime] = React.useState(new Date());
-  const [newsData, setNewsData] = React.useState([]);
+  const [time, setTime] = useState(new Date());
+  const [newsData, setNewsData] = useState([]);
   const current = new Date();
   const date = `${current.getDate()}/${
     current.getMonth() + 1
