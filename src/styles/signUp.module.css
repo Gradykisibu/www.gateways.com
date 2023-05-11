@@ -64,10 +64,6 @@
 }
 
 .signupButton{
-  background: black;
-  color: hsl(0, 0%, 93%);
-  width: 80px;
-  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;

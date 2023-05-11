@@ -23,6 +23,7 @@ const signup = () => {
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
   const [loader, setLoader] = useState(false);
   const [color, setColor] = useState("#ffffff");
+  const googleLogo = "https://www.jigsawplanet.com/John1333/Google-G-Logo-svg?rc=face";
 
   const handleSubmit = () => {
     setLoader(true);
@@ -120,7 +121,7 @@ const signup = () => {
             <Box className={styles.footer}>
               <p style={{ color: "red" }}>{errorMsg}</p>
               <button
-                style={{ borderRadius: "5px" }}
+                style={{ borderRadius: "5px", background:"black", color:" hsl(0, 0%, 93%)", width:"80px",height:"30px" }}
                 className={styles.signupButton}
                 disabled={submitButtonDisabled}
                 onClick={handleSubmit}
@@ -149,14 +150,21 @@ const signup = () => {
           >
             <button
               style={{
-                background: "red",
+                background: "black",
                 width: "200px",
                 color: "white",
+                height:"35px",
                 borderRadius: "5px",
+                paddingLeft:"20px",
+                textTransform:"uppercase",
+                display:"flex",
+                alignItems:"center",
+                justifyContent:"space-evenly",
               }}
               onClick={signInWithGoogle}
             >
-              Google
+              <img src={googleLogo} style={{ width:"20px", height:"20px"}}/>
+             <p style={{ fontSize:"12px", fontWeight:"bold"}}> Signup with google</p>
             </button>
           </Box>
 
