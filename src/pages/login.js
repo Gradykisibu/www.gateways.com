@@ -113,6 +113,7 @@ const login = () => {
             <Box className={styles.footer}>
               <p style={{ color: "red" }}>{errorMsg}</p>
               <Button
+               style={{ borderRadius: "5px", background:"black", color:" hsl(0, 0%, 93%)", width:"80px",height:"30px" }}
                 className={styles.signupButton}
                 disabled={submitButtonDisabled}
                 onClick={handleSubmit}
