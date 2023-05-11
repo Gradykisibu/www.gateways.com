@@ -66,6 +66,7 @@ const login = () => {
       })
       .catch((error) => {
         console.log(error);
+        setLoader(false)
       });
   };
 

@@ -1,0 +1,21 @@
+.title{
+    border: 1px solid black;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    text-transform: uppercase;
+    font-weight: 500;   
+}
+
+.TotalVacations{
+    font-weight: bold;
+}
+
+.Cards{
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}

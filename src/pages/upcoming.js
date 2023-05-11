@@ -1,8 +1,11 @@
+import Upcoming from '@/components/Upcoming/Upcoming'
 import React from 'react'
 
 const upcoming = () => {
   return (
-    <div>upcoming</div>
+    <div>
+      <Upcoming/>
+    </div>
   )
 }
 
