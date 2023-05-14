@@ -11,14 +11,12 @@ const Banner = () => {
 
   const [ price, setPrice ] = React.useState();
   const { setSearchFilter , user} = useContext(AuthContext);
-  const [ currentUser, setCurrentUser ] = React.useState({});
+  // const [ currentUser, setCurrentUser ] = React.useState("");
  
   React.useEffect(() => {
     if(user){
-      setCurrentUser(user.displayName)
-    } else{
-      setCurrentUser(null)
-    }
+      const currentUser = user.displayName;
+    } 
   },[])
 
   return (
