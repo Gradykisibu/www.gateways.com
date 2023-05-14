@@ -172,6 +172,13 @@ const login = () => {
               </p>
             </Link>
           </Box>
+          <Box sx={{width:"100%", display:"flex", alignItems:"center", justifyContent:"center"}}>
+          <Link href="/forgotPassword">
+            <p style={{color:"blue", textDecoration:"underline"}}>Forgot Password?</p>
+            </Link>
+          </Box>
+
+
         </Box>
       </Box>
     </Box>

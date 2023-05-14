@@ -10,8 +10,16 @@ import { useContext } from "react";
 const Banner = () => {
 
   const [ price, setPrice ] = React.useState();
-  const { setSearchFilter } = useContext(AuthContext);
-
+  const { setSearchFilter , user} = useContext(AuthContext);
+  const [ currentUser, setCurrentUser ] = React.useState({});
+ 
+  React.useEffect(() => {
+    if(user){
+      setCurrentUser(user.displayName)
+    } else{
+      setCurrentUser(null)
+    }
+  },[])
 
   return (
     <Box className={styles.Home}>
@@ -30,6 +38,11 @@ const Banner = () => {
         </Box>
 
         <Box className={styles.cardDivGrid}>
+          <Box className={styles.UserName}>
+            welcome to gateways {currentUser}
+          </Box>
+
+            <Box className={styles.SearchInputs}>
           <Box className={styles.destinationInput}>
             <label className={styles.label} htmlFor="city">
               Search for location:
@@ -54,6 +67,8 @@ const Banner = () => {
               <input onChange={(e) => setPrice(e.target.value)} className={styles.input} type="range" max="5000" min="1000" style={{width:"250px"}}/>
             </Box>
           </Box>
+            </Box>
+
         </Box>
 
         <Box className={styles.filter}>
