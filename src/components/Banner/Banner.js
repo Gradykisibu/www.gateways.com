@@ -11,13 +11,8 @@ const Banner = () => {
 
   const [ price, setPrice ] = React.useState();
   const { setSearchFilter , user} = useContext(AuthContext);
-  // const [ currentUser, setCurrentUser ] = React.useState("");
- 
-  React.useEffect(() => {
-    if(user){
-      const currentUser = user.displayName;
-    } 
-  },[])
+  const currentUser = user.displayName
+
 
   return (
     <Box className={styles.Home}>
