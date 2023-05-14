@@ -9,11 +9,8 @@ import Collapse from "@mui/material/Collapse";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import styles from "../../styles/upcoming.module.css";
 import { Box } from "@mui/material";
 import { db } from "@/Firebase/firebase";
@@ -49,8 +46,11 @@ export default function Upcoming() {
     return () => unsub();
   }, []);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
+  const handleExpandClick = (title) => {
+    console.log(title, "title")
+    if(title){
+      setExpanded(!expanded);
+    }
   };
 
   return (
@@ -81,11 +81,6 @@ export default function Upcoming() {
                     {FirstInitial.email[0]}
                   </Avatar>
                 }
-                action={
-                  <IconButton aria-label="settings">
-                    <MoreVertIcon />
-                  </IconButton>
-                }
                 title={upcoming.country}
                 subheader={upcoming.date}
               />
@@ -99,20 +94,17 @@ export default function Upcoming() {
                 alt=""
               />
               <CardContent>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.secondary" className={styles.Description}>
                   {upcoming.description}
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
                 <IconButton aria-label="share">
                   <ShareIcon />
                 </IconButton>
                 <ExpandMore
                   expand={expanded}
-                  onClick={handleExpandClick}
+                  onClick={() => handleExpandClick(upcoming.title)}
                   aria-expanded={expanded}
                   aria-label="show more"
                 >

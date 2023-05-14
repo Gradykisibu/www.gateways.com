@@ -16,7 +16,17 @@
 
 .container {
   flex-direction: column;
-  height: 450px;
+  height: 500px;
+  width: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.75);
+  opacity: 0.7;
+}
+
+.Resetcontainer {
+  flex-direction: column;
+  height: 300px;
   width: 400px;
   background-color: #fff;
   border-radius: 10px;
@@ -27,7 +37,13 @@
 .innerBox {
   display: flex;
   align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.ResetinnerBox {
+  display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: space-evenly;
 }
@@ -41,6 +57,16 @@
   width: 100%;
   height: 240px;
   margin-top: 5px;
+
+}
+
+.ResetinputContainer{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100px;
 }
 
 .heading {
@@ -61,6 +87,13 @@
     align-items: center;
     justify-content: center;
     flex-direction: column; 
+}
+
+.Resetfooter{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; 
 }
 
 .signupButton{
@@ -90,4 +123,15 @@
     width: 350px;
 
   }
+
+  .Resetcontainer{
+    width: 350px;
+  }
+ }
+
+ .GotoLogin{
+  margin-top: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
  }
