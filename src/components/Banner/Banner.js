@@ -32,7 +32,7 @@ const Banner = () => {
 
         <Box className={styles.cardDivGrid}>
           <Box className={styles.UserName}>
-            welcome to gateways {currentUser}
+            WELCOME TO GATEWAYS {currentUser}
           </Box>
 
             <Box className={styles.SearchInputs}>
