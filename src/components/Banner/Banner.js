@@ -11,7 +11,7 @@ const Banner = () => {
 
   const [ price, setPrice ] = React.useState();
   const { setSearchFilter , user} = useContext(AuthContext);
-  const currentUser = user.displayName
+  const currentUser = user?.displayName
 
 
   return (

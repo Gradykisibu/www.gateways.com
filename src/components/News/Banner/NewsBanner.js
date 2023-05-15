@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Box } from "@mui/material";
 import AirlinesIcon from "@mui/icons-material/Airlines";
 import CloudOutlinedIcon from "@mui/icons-material/CloudOutlined";
@@ -8,11 +8,11 @@ import { query, collection, onSnapshot, doc } from "firebase/firestore";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import Link from "next/link";
-
+import { AuthContext } from "@/components/context/AuthContext";
 
 const NewsBanner = () => {
   const [time, setTime] = useState(new Date());
-  const [newsData, setNewsData] = useState([]);
+const { newsData, setNewsData } = useContext(AuthContext);
   const current = new Date();
   const date = `${current.getDate()}/${
     current.getMonth() + 1
