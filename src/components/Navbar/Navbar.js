@@ -45,7 +45,7 @@ const Navbar = () => {
       <Box className={styles.logoDiv}>
         <Link href="/" className={styles.logo}>
           <h1>
-            <AirlinesIcon className={styles.icon} /> GateWays.
+            <AirlinesIcon className={styles.icon} /> GateWays
           </h1>
         </Link>
       </Box>

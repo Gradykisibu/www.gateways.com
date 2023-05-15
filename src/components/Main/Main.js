@@ -12,10 +12,9 @@ import FavoriteContext from "../context/FavouriteContext";
 import { AuthContext } from "../context/AuthContext";
 
 const Main = () => {
-  const [vacationData, setVacationData] = useState([]);
   const [favourite, setFavourite] = useState(false);
   const {addToFavourite} = useContext(FavoriteContext);
-  const { searchFilter } = useContext(AuthContext);
+  const { searchFilter,vacationData, setVacationData } = useContext(AuthContext);
 
   useEffect(() => {
     const q = query(collection(db, "Vacations"));
@@ -41,11 +40,11 @@ const Main = () => {
           return searchFilter.toLowerCase() === ''
           ? vacation
           : vacation.destTitle.toLowerCase().includes(searchFilter)
-        }).map((vacation) => {
+        }).map((vacation, index) => {
           return (
             <Box
               className={styles.singleDestination}
-              key={vacation.id}
+              key={(vacation.id, index)}
             >
               <Box className={styles.imageDiv}>
                 <img

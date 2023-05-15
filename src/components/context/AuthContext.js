@@ -8,6 +8,8 @@ export const AuthContext = createContext({});
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [ searchFilter, setSearchFilter ] = useState("");
+  const [vacationData, setVacationData] = useState([]);
+  const [newsData, setNewsData] = useState([]);
 
   useEffect(() => {
    onAuthStateChanged(auth, (data) => {
@@ -19,7 +21,11 @@ const payload = {
     user,
     setUser,
     searchFilter, 
-    setSearchFilter
+    setSearchFilter,
+    vacationData, 
+    setVacationData,
+    newsData,
+    setNewsData,
 }
 
   return (
