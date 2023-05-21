@@ -11,6 +11,7 @@ import SupportAgentOutlinedIcon from "@mui/icons-material/SupportAgentOutlined";
 import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import SettingsIcon from '@mui/icons-material/Settings';
 import Link from "next/link";
 import { signOut } from "firebase/auth";
 import { useRouter } from "next/router";
@@ -111,6 +112,18 @@ export default function FadeMenu() {
             <Box className={styles.Text}>
             <Link href="/upcoming" className="navLink">
               <p>Upcoming</p>
+            </Link>
+            </Box>
+          </MenuItem>
+
+          <MenuItem className={styles.NavItem}>
+            <Box>
+            <SettingsIcon/>
+            </Box>
+
+            <Box className={styles.Text}>
+            <Link href="/settings" className="navLink">
+              <p>Settings</p>
             </Link>
             </Box>
           </MenuItem>

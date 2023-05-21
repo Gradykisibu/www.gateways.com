@@ -5,18 +5,6 @@ import { AuthContext } from "@/components/context/AuthContext";
 import styles from "../../styles/newsBanner.module.css";
 import CloudOutlinedIcon from "@mui/icons-material/CloudOutlined";
 import ReactPlayer from "react-player/lazy";
-import { getDoc, doc } from "firebase/firestore";
-// import { GetServerSideProps } from "next";
-import { db } from "@/Firebase/firebase";
-
-export const GetServerSideProps = async (ctx) => {
-  const docRef = doc(db, "News", ctx.query.id);
-  const docSnap = await getDoc(docRef);
-  const data = docSnap.data();
-  console.log(data);
-  if (!data) return { notFound: true };
-  return { props: { data } };
-};
 
 const NewsDetail = () => {
   const { newsData } = useContext(AuthContext);
@@ -24,7 +12,6 @@ const NewsDetail = () => {
   const router = useRouter();
   const matchingId = router.query.id;
   const currentData = newsData.filter((item) => item.id == matchingId);
-  console.log(singleData, "FilteredData");
 
   const getCustomData = () => {
     setSingleData(currentData);
@@ -102,7 +89,7 @@ const NewsDetail = () => {
             <Box className={styles.videoContainer}>
               <ReactPlayer
                 url={Data.videoUrl}
-                width="80%"
+                width="100%"
                 height="50vh"
                 pip={true}
                 controls={true}
@@ -116,6 +103,14 @@ const NewsDetail = () => {
               </Box>
               <Box className={styles.Description}>
                 <p>{Data.description}</p>
+              </Box>
+
+              <Box className={styles.Description}>
+                <p>{Data.description2}</p>
+              </Box>
+
+              <Box className={styles.Description}>
+                <p>{Data.description3}</p>
               </Box>
             </Box>
           </Box>
