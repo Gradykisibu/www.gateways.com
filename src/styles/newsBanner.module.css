@@ -227,6 +227,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 30px;
+    width: 80%;
 }
 
 .DescriptionContainer{
@@ -244,8 +245,9 @@
     align-items: center;
     justify-content: center;
     width: 80%;
-    text-transform: uppercase;
-    margin-top: 20px;
+    text-transform: capitalize;
+    margin-top: 10px;
     font-weight: light;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
