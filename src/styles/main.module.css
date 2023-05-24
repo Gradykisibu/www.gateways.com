@@ -240,3 +240,43 @@
     margin-top: 20px;
  }
 }
+
+.commentFeed{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+
+}
+
+.innerCommentFeed{
+    width: 80%;
+    color: black;
+    background-color: #fff;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+
+.comment{
+    background-color: grey;
+    color: white;
+    font-weight: bold;
+    height: auto;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    font-size: 13px;
+    padding-left: 8px;
+}
+
+.userInitial{
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 5px;
+}

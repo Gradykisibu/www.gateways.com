@@ -16,8 +16,11 @@ import Link from "next/link";
 import { signOut } from "firebase/auth";
 import { useRouter } from "next/router";
 import { auth } from "@/Firebase/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import MarkChatUnreadIcon from '@mui/icons-material/MarkChatUnread';
 
 export default function FadeMenu() {
+  const [user, setUser] = React.useState({});
   const router = useRouter();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -37,6 +40,12 @@ export default function FadeMenu() {
         console.log(error);
       });
   };
+
+  React.useEffect(() => {
+    onAuthStateChanged(auth, (data) => {
+      setUser(data);
+    });
+  }, []);
 
   return (
     <div>
@@ -118,6 +127,18 @@ export default function FadeMenu() {
 
           <MenuItem className={styles.NavItem}>
             <Box>
+            <MarkChatUnreadIcon/>
+            </Box>
+
+            <Box className={styles.Text}>
+            <Link href="/comments" className="navLink">
+              <p>Comments</p>
+            </Link>
+            </Box>
+          </MenuItem>
+
+          <MenuItem className={styles.NavItem}>
+            <Box>
             <SettingsIcon/>
             </Box>
 
@@ -134,7 +155,17 @@ export default function FadeMenu() {
             </Box>
 
             <Box className={styles.Text}>
-            <button onClick={userSignOut}>Logout</button>
+            {user ? (
+            <button onClick={userSignOut}>
+               Logout
+            </button>
+          ) : (
+            <Link href="login">
+            <button>
+              Login
+            </button>
+            </Link>
+          )}
             </Box>
           </MenuItem>
 
