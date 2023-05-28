@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -13,6 +13,8 @@ import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/Firebase/firebase";
+import DehazeIcon from "@mui/icons-material/Dehaze";
+import ClearAllIcon from "@mui/icons-material/ClearAll";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,10 +51,9 @@ function a11yProps(index) {
 
 export default function VerticalTabs() {
   const [value, setValue] = React.useState(0);
-  const [ user, setUser ] = React.useState({});
-  const initial = user
-
-
+  const [user, setUser] = React.useState({});
+  const [isOpen, setIsOpen] = useState(false);
+  const initial = user;
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -63,6 +64,15 @@ export default function VerticalTabs() {
       setUser(data.displayName);
     });
   }, []);
+
+  const handleCloseDrawer = () => {
+    setIsOpen(true);
+  };
+
+  const handleOpenDrawer = () => {
+    setIsOpen(false);
+  };
+
   return (
     <Box
       sx={{
@@ -76,7 +86,7 @@ export default function VerticalTabs() {
       <Box
         sx={{
           border: "1px solid black",
-          mt: "10px",
+          pt: "10px",
           width: "100%",
           height: "150px",
           display: "flex",
@@ -92,56 +102,86 @@ export default function VerticalTabs() {
             justifyContent: "center",
           }}
         >
-          <Avatar
-            sx={{ width: 56, height: 56 }}
-          >
-            {initial[0]}
-          </Avatar>
+          <Avatar sx={{ width: 56, height: 56}}>{initial[0]}</Avatar>
         </Stack>
+
+<Box sx={{ width:"100%", display:"flex", height:"70%", mt:"10px"}}>
         <Box
           sx={{
+            width: "10%",
             display: "flex",
-            alignItems: "enter",
+            alignItems: "center",
             justifyContent: "center",
-            fontWeight:"bold",
+            color: "white",
+            background: "#000",
+            height: "100%",
           }}
         >
-          {/* [{user}] */}
+          {isOpen ? (
+            <button onClick={() => handleOpenDrawer()}>
+              <ClearAllIcon />
+            </button>
+          ) : (
+            <button onClick={() => handleCloseDrawer()}>
+              <DehazeIcon />
+            </button>
+          )}
         </Box>
+</Box>
       </Box>
 
-      <Box  sx={{ flexGrow: 1,bgcolor: "rgb(240, 240, 246)", display: 'flex', height: "90vh"}}>
-        <Tabs
-          orientation="vertical"
-          variant="scrollable"
-          value={value}
-          onChange={handleChange}
-          aria-label="Vertical tabs example"
-          sx={{ borderRight: 1, borderColor: "divider", width: "100px" }}
+      {isOpen ? (
+        <Box
+          sx={{
+            flexGrow: 1,
+            bgcolor: "rgb(240, 240, 246)",
+            display: "flex",
+            alignItems:"center", 
+            justifyContent:"center", 
+            flexDirection:"column",
+            height: "90vh",
+            width:"100%",
+          }}
         >
-          <Tab label="Account" {...a11yProps(0)} />
-          <Tab label="User Info" {...a11yProps(1)} />
-          <Tab label="Theme" {...a11yProps(2)} />
-          <Tab label="Password" {...a11yProps(3)} />
-          <Tab label="Delete Account" {...a11yProps(4)} />
-        </Tabs>
-
-        <TabPanel value={value} index={0}>
-          <Account />
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <UserInfor />
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          <Theme />
-        </TabPanel>
-        <TabPanel value={value} index={3}>
-          <ChangePassword />
-        </TabPanel>
-        <TabPanel value={value} index={4}>
-          <DeleteAccount />
-        </TabPanel>
-      </Box>
+          <Tabs
+            orientation="vertical"
+            variant="scrollable"
+            value={value}
+            onChange={handleChange}
+            aria-label="Vertical tabs example"
+            sx={{ 
+            borderRight: 1, 
+            borderColor: "divider", 
+            width: "100%", 
+            display: "flex",
+            alignItems:"center", 
+            justifyContent:"center", 
+            flexDirection:"column"
+          }}
+          >
+            <Tab label="Account" {...a11yProps(0)} />
+            <Tab label="User Info" {...a11yProps(1)} />
+            <Tab label="Theme" {...a11yProps(2)} />
+            <Tab label="Delete Account" {...a11yProps(3)} />
+          </Tabs>
+          
+        </Box>
+      ) : (
+        <Box>
+          <TabPanel value={value} index={0}>
+            <Account />
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            <UserInfor />
+          </TabPanel>
+          <TabPanel value={value} index={2}>
+            <Theme />
+          </TabPanel>
+          <TabPanel value={value} index={3}>
+            <DeleteAccount />
+          </TabPanel>
+        </Box>
+      )}
     </Box>
   );
 }

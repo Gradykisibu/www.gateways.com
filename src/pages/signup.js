@@ -50,6 +50,7 @@ const signup = () => {
     setLoader(false);
   };
 
+
   const provider = new GoogleAuthProvider();
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider)
@@ -63,6 +64,7 @@ const signup = () => {
         console.log(error);
       });
   };
+  
 
   return (
     <Box className={styles.overLay}>

@@ -9,10 +9,12 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import Link from "next/link";
 import { AuthContext } from "@/components/context/AuthContext";
+import { useTheme } from "@/components/context/ThemeContext";
 
 const NewsBanner = () => {
   const [time, setTime] = useState(new Date());
-const { newsData, setNewsData } = useContext(AuthContext);
+  const { newsData, setNewsData } = useContext(AuthContext);
+  const darkTheme = useTheme();
   const current = new Date();
   const date = `${current.getDate()}/${
     current.getMonth() + 1
@@ -35,9 +37,9 @@ const { newsData, setNewsData } = useContext(AuthContext);
   }, []);
 
   return (
-    <Box className={styles.mainContainer}>
-      <Box sx={{ width: "90%", flexDirection: "column" }}>
-        <Box className={styles.innerContainer}>
+    <Box className={styles.mainContainer} sx={{background: darkTheme && "#000"}}>
+      <Box sx={{ width: "90%", flexDirection: "column"}}>
+        <Box className={styles.innerContainer} sx={{border: darkTheme ? "1px solid white" : "1px solid black", color:darkTheme ? "#fff" : "#000"}}>
           <Box className={styles.logo}>
             <AirlinesIcon />
             <h1 style={{ fontSize: "20px" }}>GateWays News.</h1>
@@ -48,9 +50,7 @@ const { newsData, setNewsData } = useContext(AuthContext);
               <p>Date : {date}</p>
             </Box>
 
-            <Box
-              className={styles.dailySun}
-            >
+            <Box className={styles.dailySun}>
               <CloudOutlinedIcon />
               <h1>THE DAILY SUN</h1>
               <CloudOutlinedIcon />
@@ -62,22 +62,21 @@ const { newsData, setNewsData } = useContext(AuthContext);
           </Box>
         </Box>
 
+        <Box className={styles.newsSection}>
+          <Box className={styles.postedNews}>
+            <Box className={styles.header} sx={{border: darkTheme ? "1px solid white" : "1px solid black", color:darkTheme ? "#fff" : "#000"}}>
+              <p>
+                Our website has a responsive design, making it easy to read on
+                mobile devices. We offer quality reporting throughout the day.
+              </p>
+            </Box>
 
-          <Box className={styles.newsSection}>
-            <Box className={styles.postedNews}>
-              <Box className={styles.header}>
-                <p>
-                  Our website has a responsive design, making it easy to read on
-                  mobile devices. We offer quality reporting throughout the day.
-                </p>
-              </Box>
-
-              <Box className={styles.news}>
-                {newsData.map((news) => {
-                  return (
-                    <Link href={"/NewsDetail/" + news.id}>
-                    <Box className={styles.card} key={news.id}>
-                      <Box className={styles.leftinnerCard}>
+            <Box className={styles.news}>
+              {newsData.map((news) => {
+                return (
+                  <Link href={"/NewsDetail/" + news.id}>
+                    <Box className={styles.card} key={news.id} sx={{background: darkTheme ? "#fff" : "#000"}}>
+                      <Box className={styles.leftinnerCard} sx={{color: darkTheme ? "#000" : "#fff"}}>
                         <p
                           style={{
                             fontWeight: "bold",
@@ -109,195 +108,193 @@ const { newsData, setNewsData } = useContext(AuthContext);
                         />
                       </Box>
                     </Box>
-                    </Link>
-                  );
-                })}
+                  </Link>
+                );
+              })}
+            </Box>
+          </Box>
+
+          <Box className={styles.suggestedNews}>
+            <Box className={styles.sideCard} sx={{border: darkTheme ? "1px solid white" : "1px solid black", color:darkTheme ? "#fff" : "#000"}}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <h1 style={{ fontWeight: "bold", textDecoration: "underline" }}>
+                  MOST READ
+                </h1>
+              </Box>
+
+              <Box>
+                <h1
+                  style={{
+                    fontWeight: "lighter",
+                    marginTop: "10px",
+                    paddingLeft: "10px",
+                  }}
+                >
+                  <span style={{ fontWeight: "bold", color: "grey" }}>1</span> :
+                  'Are those our councillors walking out?' ANC rebels turn on
+                  Lesufi's EFF deal
+                </h1>
+              </Box>
+
+              <Box>
+                <h1
+                  style={{
+                    fontWeight: "lighter",
+                    marginTop: "10px",
+                    paddingLeft: "10px",
+                  }}
+                >
+                  <span style={{ fontWeight: "bold", color: "grey" }}>2</span> :
+                  WRAP | Thabo Bester escape: Accused's bail application
+                  postponed to 11 May
+                </h1>
+              </Box>
+
+              <Box>
+                <h1
+                  style={{
+                    fontWeight: "lighter",
+                    marginTop: "10px",
+                    paddingLeft: "10px",
+                  }}
+                >
+                  <span style={{ fontWeight: "bold", color: "grey" }}>3</span> :
+                  Parliament fines 'Gupta Minister' Zwane 5 days' pay, bars him
+                  from debate for full term
+                </h1>
+              </Box>
+
+              <Box>
+                <h1
+                  style={{
+                    fontWeight: "lighter",
+                    marginTop: "10px",
+                    paddingLeft: "10px",
+                  }}
+                >
+                  <span style={{ fontWeight: "bold", color: "grey" }}>4</span> :
+                  The Guptas win – for now – on the 'unacceptably cheap' R20m
+                  sale of a seized Cape Town mansion
+                </h1>
+              </Box>
+
+              <Box>
+                <h1
+                  style={{
+                    fontWeight: "lighter",
+                    marginTop: "10px",
+                    paddingLeft: "10px",
+                  }}
+                >
+                  <span style={{ fontWeight: "bold", color: "grey" }}>5</span> :
+                  Bester advocate withdraws because of 'funding' after being
+                  asked about his own criminal trials
+                </h1>
               </Box>
             </Box>
 
-            <Box className={styles.suggestedNews}>
-              <Box className={styles.sideCard}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <h1
-                    style={{ fontWeight: "bold", textDecoration: "underline" }}
-                  >
-                    MOST READ
-                  </h1>
-                </Box>
-
-                <Box>
-                  <h1
-                    style={{
-                      fontWeight: "lighter",
-                      marginTop: "10px",
-                      paddingLeft: "10px",
-                    }}
-                  >
-                    <span style={{ fontWeight: "bold", color: "grey" }}>1</span>{" "}
-                    : 'Are those our councillors walking out?' ANC rebels turn
-                    on Lesufi's EFF deal
-                  </h1>
-                </Box>
-
-                <Box>
-                  <h1
-                    style={{
-                      fontWeight: "lighter",
-                      marginTop: "10px",
-                      paddingLeft: "10px",
-                    }}
-                  >
-                    <span style={{ fontWeight: "bold", color: "grey" }}>2</span>{" "}
-                    : WRAP | Thabo Bester escape: Accused's bail application
-                    postponed to 11 May
-                  </h1>
-                </Box>
-
-                <Box>
-                  <h1
-                    style={{
-                      fontWeight: "lighter",
-                      marginTop: "10px",
-                      paddingLeft: "10px",
-                    }}
-                  >
-                    <span style={{ fontWeight: "bold", color: "grey" }}>3</span>{" "}
-                    : Parliament fines 'Gupta Minister' Zwane 5 days' pay, bars
-                    him from debate for full term
-                  </h1>
-                </Box>
-
-                <Box>
-                  <h1
-                    style={{
-                      fontWeight: "lighter",
-                      marginTop: "10px",
-                      paddingLeft: "10px",
-                    }}
-                  >
-                    <span style={{ fontWeight: "bold", color: "grey" }}>4</span>{" "}
-                    : The Guptas win – for now – on the 'unacceptably cheap'
-                    R20m sale of a seized Cape Town mansion
-                  </h1>
-                </Box>
-
-                <Box>
-                  <h1
-                    style={{
-                      fontWeight: "lighter",
-                      marginTop: "10px",
-                      paddingLeft: "10px",
-                    }}
-                  >
-                    <span style={{ fontWeight: "bold", color: "grey" }}>5</span>{" "}
-                    : Bester advocate withdraws because of 'funding' after being
-                    asked about his own criminal trials
-                  </h1>
-                </Box>
-              </Box>
-
-              <Box className={styles.sideCard}
-                sx={{ marginTop: "10px", background: "black", color: "white" }}
+            <Box
+              className={styles.sideCard}
+              style={{border: darkTheme ? "1px solid white" : "1px solid black"}}
+              sx={{ marginTop: "10px", background: "black", color: darkTheme ? "#fff" : "#000" }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
               >
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <h1
-                    style={{ fontWeight: "bold", textDecoration: "underline" }}
-                  >
-                    News Letters
-                  </h1>
-                </Box>
-
-                <Box
-                  sx={{
-                    fontSize: "13px",
-                    fontWeight: "lighter",
-                    marginLeft: "10px",
-                    marginTop: "10px",
-                  }}
-                >
-                  <p>Top News - weekly</p>
-                </Box>
-
-                <Box>
-                  <img
-                    src="https://cdn.24.co.za/files/Cms/General/d/9374/2e9d19003dd14aa1be704b3ef6cd7ea3.jpg"
-                    style={{
-                      width: "320px",
-                      height: "270px",
-                      marginTop: "10px",
-                    }}
-                  />
-                </Box>
-
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginTop: "10px",
-                  }}
-                >
-                  <NewspaperIcon fontSize={"large"} />
-                  <p style={{ fontSize: "11px", marginLeft: "5px" }}>
-                    A newsletter dedicated to the best conversations and
-                    comments on GateWays News.
-                  </p>
-                </Box>
+                <h1 style={{ fontWeight: "bold", textDecoration: "underline" }}>
+                  News Letters
+                </h1>
               </Box>
 
               <Box
-                className={styles.sideCard}
                 sx={{
+                  fontSize: "13px",
+                  fontWeight: "lighter",
+                  marginLeft: "10px",
                   marginTop: "10px",
-                  background: "#f8da17",
-                  height: "170px !important",
-                  paddingTop: "20px",
                 }}
               >
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <img
-                    src="https://cdn.24.co.za/files/Cms/General/d/10123/02b7ad0b29a24e679b19ba70ebbf12bd.png"
-                    style={{ width: "60px", height: "60px" }}
-                  />
-                  <p style={{ fontWeight: "bold" }}>Get the latest numbers.</p>
-                </Box>
+                <p>Top News - weekly</p>
+              </Box>
 
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRadius: "10px",
-                    marginTop: "40px",
-                    background: "black",
-                    color: "white",
-                    height: "30px",
-                    cursor: "pointer",
-                    width: "200px",
-                    marginLeft:"45px",
+              <Box>
+                <img
+                  src="https://cdn.24.co.za/files/Cms/General/d/9374/2e9d19003dd14aa1be704b3ef6cd7ea3.jpg"
+                  style={{
+                    width: "320px",
+                    height: "270px",
+                    marginTop: "10px",
                   }}
-                >
-                  <button>Full list of lottery results</button>
-                </Box>
+                />
+              </Box>
+
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginTop: "10px",
+                }}
+              >
+                <NewspaperIcon fontSize={"large"} />
+                <p style={{ fontSize: "11px", marginLeft: "5px" }}>
+                  A newsletter dedicated to the best conversations and comments
+                  on GateWays News.
+                </p>
               </Box>
             </Box>
+
+            <Box
+              className={styles.sideCard}
+              sx={{
+                marginTop: "10px",
+                background: "#f8da17",
+                height: "170px !important",
+                paddingTop: "20px",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img
+                  src="https://cdn.24.co.za/files/Cms/General/d/10123/02b7ad0b29a24e679b19ba70ebbf12bd.png"
+                  style={{ width: "60px", height: "60px" }}
+                />
+                <p style={{ fontWeight: "bold" }}>Get the latest numbers.</p>
+              </Box>
+
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "10px",
+                  marginTop: "40px",
+                  background: "black",
+                  color: "white",
+                  height: "30px",
+                  cursor: "pointer",
+                  width: "200px",
+                  marginLeft: "45px",
+                }}
+              >
+                <button>Full list of lottery results</button>
+              </Box>
+            </Box>
+          </Box>
         </Box>
       </Box>
     </Box>

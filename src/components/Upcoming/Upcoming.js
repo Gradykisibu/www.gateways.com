@@ -16,6 +16,7 @@ import { Box } from "@mui/material";
 import { db } from "@/Firebase/firebase";
 import { query, collection, onSnapshot, doc } from "firebase/firestore";
 import { AuthContext } from "../context/AuthContext";
+import { useTheme } from "../context/ThemeContext";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -29,6 +30,7 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function Upcoming() {
+  const darkTheme = useTheme();
   const [expanded, setExpanded] = React.useState(false);
   const [upcomingData, setUpcomingData] = React.useState([]);
   const { user } = React.useContext(AuthContext);
@@ -62,12 +64,13 @@ export default function Upcoming() {
         alignItems: "center",
         flexDirection: "column",
         paddingTop: "30px",
+        background: darkTheme && "#000",
       }}
     >
-      <Box className={styles.title}>
+      <Box className={styles.title} sx={{border: darkTheme ? "1px solid #fff" : "1px solid #000", color:darkTheme ? "#fff" : "#000"}}>
         <p>Best Upcoming Vacations 2023</p>
       </Box>
-      <p className={styles.TotalVacations}>
+      <p className={styles.TotalVacations} style={{ color:darkTheme ? "#fff" : "#000"}}>
         TOTAL UPCOMING VACATIONS: {upcomingData.length}
       </p>
 
