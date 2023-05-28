@@ -274,7 +274,6 @@
 }
 
 .userInitial{
-    /* border: 1px solid red; */
     display: flex;
     align-items: center;
     justify-content: flex-start;

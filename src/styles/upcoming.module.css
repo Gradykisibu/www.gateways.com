@@ -1,5 +1,4 @@
 .title{
-    border: 1px solid black;
     width: 80%;
     display: flex;
     align-items: center;
@@ -18,6 +17,7 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    padding-bottom: 10px
 }
 
 .Description{

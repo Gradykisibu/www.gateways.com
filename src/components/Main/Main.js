@@ -10,11 +10,13 @@ import Link from "next/link";
 import InfoIcon from '@mui/icons-material/Info';
 import FavoriteContext from "../context/FavouriteContext";
 import { AuthContext } from "../context/AuthContext";
+import { useTheme } from "../context/ThemeContext";
 
 const Main = () => {
   const [favourite, setFavourite] = useState(false);
   const {addToFavourite} = useContext(FavoriteContext);
   const { searchFilter,vacationData, setVacationData } = useContext(AuthContext);
+  const darkTheme = useTheme();
 
   useEffect(() => {
     const q = query(collection(db, "Vacations"));
@@ -30,7 +32,7 @@ const Main = () => {
 
 
   return (
-    <Box>
+    <Box sx={{background: darkTheme && "black", padding:"10px"}}>
       <Box className={styles.header}>
         <h1 className={styles.headerText}>Our popular destinations</h1>
       </Box>

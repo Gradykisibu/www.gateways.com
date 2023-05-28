@@ -14,6 +14,7 @@ import { auth } from "@/Firebase/firebase";
 import FadeMenu from "./Menu/Menu";
 import MoonLoader from "react-spinners/MoonLoader";
 import FavoriteContext from "../context/FavouriteContext";
+import { useTheme } from "../context/ThemeContext";
 
 const Navbar = () => {
   const router = useRouter();
@@ -21,6 +22,7 @@ const Navbar = () => {
   const [color, setColor] = React.useState("#ffffff");
   const [user, setUser] = React.useState({});
   const { favouriteItem, showHideFavourite } = useContext(FavoriteContext);
+  const darkTheme = useTheme(); 
 
   const userSignOut = () => {
     setLoader(true);
@@ -41,9 +43,9 @@ const Navbar = () => {
   }, []);
 
   return (
-    <Box className={styles.header}>
+    <Box className={styles.header} sx={{background: darkTheme ? "#000" : "hsl(0, 0%, 93%)", color:darkTheme && "#fff"}}>
       <Box className={styles.logoDiv}>
-        <Link href="/" className={styles.logo}>
+        <Link href="/" className={styles.logo} sx={{color:darkTheme && "#fff"}}>
           <h1>
             <AirlinesIcon className={styles.icon} /> GateWays
           </h1>
@@ -51,7 +53,7 @@ const Navbar = () => {
       </Box>
 
       <Box className={styles.navUl}>
-        <Box className={styles.NavItem}>
+        <Box className={styles.NavItem} sx={{ color:darkTheme && "#fff"}}>
           <HomeOutlinedIcon fontSize="small" />
           <Link href="/" className="navLink">
             <p>Home</p>
@@ -118,7 +120,7 @@ const Navbar = () => {
           </Link>
         </Box>
 
-        <Box className={styles.logoutbtn}>
+        <Box className={styles.logoutbtn} sx={{background: darkTheme ? "#fff" : "#000", color:darkTheme ? "#000" : "#fff"}}>
           {user ? (
             <button onClick={userSignOut}>
               {loader ? <MoonLoader size={20} color={color} /> : "Logout"}

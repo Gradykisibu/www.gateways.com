@@ -3,25 +3,20 @@ import FavoriteContext from "@/components/context/FavouriteContext";
 import { Box } from "@mui/material";
 import Favourite from "@/components/Favourite/Favourite";
 import styles from "../styles/favourites.module.css";
-// import { db } from "@/Firebase/firebase";
-// import { query, collection,doc, addDoc } from "firebase/firestore";
+import { useTheme } from "@/components/context/ThemeContext";
+
 
 const addToFavourite = () => {
   const { favouriteItem } = useContext(FavoriteContext);
-
-
-  // const addFav = () => {
-  //   addDoc(collection(db, 'Favourites'),{
-  //    favouriteItem
-  //    })
-  // }
-
-  // useEffect(() => {
-  //   addFav()
-  // },[])
+  const darkTheme = useTheme();
    
   return (
-            <Box className={styles.addFav}>
+            <Box sx={{
+              background:darkTheme && "black",
+              color:darkTheme ? "white" : "black",
+              width:"100%",
+              height:"100vh"
+            }}>
               { 
                 favouriteItem.length === 0 ? (
                   <Box sx={{ width:"100%", height:"90vh", display:"flex", alignItems:"center", justifyContent:"center"}}>
