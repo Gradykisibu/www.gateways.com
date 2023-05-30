@@ -581,7 +581,7 @@ const Details = () => {
               </Box>
 
               {/* Location Google Map Iframe View */}
-              <Box>
+              <Box sx={{width:"100%", padding:"10px"}}>
                 <Box className={styles.descriptionTitle}>
                   <h1>Map Location</h1>
                 </Box>
@@ -599,7 +599,6 @@ const Details = () => {
                     width="auto"
                     height="400"
                     style={{ border: "0" }}
-                    // allowfullscreen=""
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"
                   ></iframe>
