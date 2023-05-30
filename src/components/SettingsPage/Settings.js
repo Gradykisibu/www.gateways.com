@@ -4,11 +4,9 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Account from "../SettingsTabs/Account";
 import UserInfor from "../SettingsTabs/UserInfor";
 import DeleteAccount from "../SettingsTabs/DeleteAccount";
 import Theme from "../SettingsTabs/Theme";
-import ChangePassword from "../SettingsTabs/ChangePassword";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import { onAuthStateChanged } from "firebase/auth";
@@ -102,32 +100,32 @@ export default function VerticalTabs() {
             justifyContent: "center",
           }}
         >
-          <Avatar sx={{ width: 56, height: 56}}>{initial[0]}</Avatar>
+          <Avatar sx={{ width: 56, height: 56 }}>{initial[0]}</Avatar>
         </Stack>
 
-<Box sx={{ width:"100%", display:"flex", height:"70%", mt:"10px"}}>
-        <Box
-          sx={{
-            width: "10%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "white",
-            background: "#000",
-            height: "100%",
-          }}
-        >
-          {isOpen ? (
-            <button onClick={() => handleOpenDrawer()}>
-              <ClearAllIcon />
-            </button>
-          ) : (
-            <button onClick={() => handleCloseDrawer()}>
-              <DehazeIcon />
-            </button>
-          )}
+        <Box sx={{ width: "100%", display: "flex", height: "70%", mt: "10px" }}>
+          <Box
+            sx={{
+              width: "10%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "white",
+              background: "#000",
+              height: "100%",
+            }}
+          >
+            {isOpen ? (
+              <button onClick={() => handleOpenDrawer()}>
+                <ClearAllIcon />
+              </button>
+            ) : (
+              <button onClick={() => handleCloseDrawer()}>
+                <DehazeIcon />
+              </button>
+            )}
+          </Box>
         </Box>
-</Box>
       </Box>
 
       {isOpen ? (
@@ -136,11 +134,11 @@ export default function VerticalTabs() {
             flexGrow: 1,
             bgcolor: "rgb(240, 240, 246)",
             display: "flex",
-            alignItems:"center", 
-            justifyContent:"center", 
-            flexDirection:"column",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
             height: "90vh",
-            width:"100%",
+            width: "100%",
           }}
         >
           <Tabs
@@ -149,31 +147,30 @@ export default function VerticalTabs() {
             value={value}
             onChange={handleChange}
             aria-label="Vertical tabs example"
-            sx={{ 
-            borderRight: 1, 
-            borderColor: "divider", 
-            width: "100%", 
-            display: "flex",
-            alignItems:"center", 
-            justifyContent:"center", 
-            flexDirection:"column"
-          }}
+            sx={{
+              borderRight: 1,
+              borderColor: "divider",
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
           >
-            <Tab label="User Info" {...a11yProps(0)} />
-            <Tab label="Theme" {...a11yProps(1)} />
-            <Tab label="Delete Account" {...a11yProps(2)} />
+            {/* <Tab label="User Info" {...a11yProps(0)} /> */}
+            <Tab label="Theme" {...a11yProps(0)} />
+            <Tab label="Delete Account" {...a11yProps(1)} />
           </Tabs>
-          
         </Box>
       ) : (
         <Box>
-          <TabPanel value={value} index={0}>
+          {/* <TabPanel value={value} index={0}>
             <UserInfor />
-          </TabPanel>
-          <TabPanel value={value} index={1}>
+          </TabPanel> */}
+          <TabPanel value={value} index={0}>
             <Theme />
           </TabPanel>
-          <TabPanel value={value} index={2}>
+          <TabPanel value={value} index={1}>
             <DeleteAccount />
           </TabPanel>
         </Box>
