@@ -9,6 +9,8 @@ import { auth } from "@/Firebase/firebase";
 const DeleteAccount = () => {
   const router = useRouter();
   const [email, setEmail] = React.useState("");
+  const [ authenticatedUser, setAuthenticatedUser ] = React.useState(false);
+
   const handleChange = (e) => {
     setEmail(e.target.value);
   };
@@ -42,6 +44,7 @@ const DeleteAccount = () => {
         const user = result.user;
         alert("User has reAuthenticated")
         console.log(user);
+        setAuthenticatedUser(true);
       })
       .catch((error) => {
         console.log(error);
@@ -90,6 +93,7 @@ const DeleteAccount = () => {
           pt: "20px",
         }}
       >
+        { authenticatedUser ? (
         <form onSubmit={handleDeleteAccount}>
           <Box
             sx={{
@@ -113,6 +117,7 @@ const DeleteAccount = () => {
                 paddingLeft: "10px",
                 height: "40px",
                 paddingTop: "10px",
+                border:"1px solid black",
               }}
             />
 
@@ -120,8 +125,7 @@ const DeleteAccount = () => {
               sx={{
                 background: "#000",
                 color: "white",
-                fontWeight: "bold",
-                width: "150px",
+                width: "190px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -132,7 +136,9 @@ const DeleteAccount = () => {
             </Box>
           </Box>
         </form>
-
+        )
+      :
+      (
 
         <Box
               sx={{
@@ -148,6 +154,9 @@ const DeleteAccount = () => {
             >
               <button onClick={loginInWithGoogle}>REAUTHENTICATE</button>
             </Box>
+      )}
+
+
 
         <Box
           sx={{

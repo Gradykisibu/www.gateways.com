@@ -1,8 +1,9 @@
+import Support from '@/components/Support/Support'
 import React from 'react'
 
 const supportChat = () => {
   return (
-    <div>supportChat</div>
+    <div><Support/></div>
   )
 }
 

@@ -1,12 +1,56 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../styles/footer.module.css";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import AirlinesIcon from "@mui/icons-material/Airlines";
+import { sendContactForm } from "../../../lib/api";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Footer = () => {
+  const [ state, setState ] = useState({
+    email:""
+  });
+  const [  loader, setLoader ] = useState(false)
+
+  const handleChange = (e) => {
+    setState((prev) => ({ ...prev, email: e.target.value }));
+  }
+
+  const handleNotify = () => {
+    toast.success("Email address has been sent", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+    });
+  }
+
+  const handleWarning = () => {
+    toast.warning("Email address was not sent", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+    });
+  };
+
+  const handleSubmitEmail = async (e) => {
+    e.preventDefault();
+    setLoader(true);
+    if(state.email && state.email.includes("@")){
+      await sendContactForm(state); 
+      handleNotify();
+      setState({email:""});
+      setLoader(false);
+    }else{
+      handleWarning();
+    }
+  }
+
   return (
     <Box className={styles.Home}>
+      <ToastContainer/>
       <Box>
         <video
           className={styles.videoContainer}
@@ -26,16 +70,23 @@ const Footer = () => {
             <span>TRAVEL WITH GATEWAYS.COM</span>
           </h1>
 
-          <Box className={styles.emailContainer} sx={{ display: "flex", marginTop: "10px" }}>
-            <input
-              className={styles.input}
-              type="text"
-              placeholder="Enter Email Address"
-            />
-            <button className={styles.sendBtn}>
-              SEND <SendOutlinedIcon fontSize="small" />
-            </button>
-          </Box>
+          <form onSubmit={handleSubmitEmail}>
+            <Box
+              className={styles.emailContainer}
+              sx={{ display: "flex", marginTop: "10px" }}
+            >
+              <input
+                className={styles.input}
+                type="text"
+                placeholder="Enter Email Address"
+                value={state.email}
+                onChange={handleChange}
+              />
+              <button type="submit" className={styles.sendBtn}>
+                {loader ? "SENDING..." : "SEND"}
+              </button>
+            </Box>
+          </form>
         </Box>
 
         <Box className={styles.cardDivGrid}>
@@ -107,63 +158,33 @@ const Footer = () => {
                 <p>AGENCY</p>
 
                 <Box className={styles.agency}>
-                  <p className={styles.text}>
-                   Services
-                  </p>
-                  <p className={styles.text}>
-                   Insurance
-                  </p>
-                  <p className={styles.text}>
-                   Agency
-                  </p>
-                  <p className={styles.text}>
-                    Tourism
-                  </p>
-                  <p className={styles.text}>
-                    Payment
-                  </p>
+                  <p className={styles.text}>Services</p>
+                  <p className={styles.text}>Insurance</p>
+                  <p className={styles.text}>Agency</p>
+                  <p className={styles.text}>Tourism</p>
+                  <p className={styles.text}>Payment</p>
                 </Box>
               </Box>
               <Box>
                 <p>PARTNERS</p>
 
                 <Box className={styles.agency}>
-                  <p className={styles.text}>
-                    Booking
-                  </p>
-                  <p className={styles.text}>
-                     Rental Car
-                  </p>
-                  <p className={styles.text}>
-                    Hostel World
-                  </p>
-                  <p className={styles.text}>
-                     Trivago
-                  </p>
-                  <p className={styles.text}>
-                    TripAdvisor
-                  </p>
+                  <p className={styles.text}>Booking</p>
+                  <p className={styles.text}>Rental Car</p>
+                  <p className={styles.text}>Hostel World</p>
+                  <p className={styles.text}>Trivago</p>
+                  <p className={styles.text}>TripAdvisor</p>
                 </Box>
               </Box>
               <Box>
                 <p>LAST MINUTE</p>
 
                 <Box className={styles.agency}>
-                  <p className={styles.text}>
-                     North East
-                  </p>
-                  <p className={styles.text}> 
-                      Pretoria
-                  </p>
-                  <p className={styles.text}>
-                      Dueban
-                  </p>
-                  <p className={styles.text}>
-                     CapeTown
-                  </p>
-                  <p className={styles.text}>
-                     Johanessburg
-                  </p>
+                  <p className={styles.text}>North East</p>
+                  <p className={styles.text}>Pretoria</p>
+                  <p className={styles.text}>Dueban</p>
+                  <p className={styles.text}>CapeTown</p>
+                  <p className={styles.text}>Johanessburg</p>
                 </Box>
               </Box>
             </Box>

@@ -1,0 +1,155 @@
+.mainContainer{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.innerContainer{
+    width: 100%;
+    flex-direction: column;
+}
+
+.topBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.supportBtn{
+    background: black;
+    color: white;
+    font-weight: bold;
+    width: 300px;
+    text-transform: uppercase;
+}
+
+.bottomBox{
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.innerBox {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .inputContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+
+  .button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+    width: 50%;
+    margin-top: 30px;
+  }
+
+.input{
+    width: 500px;
+    background-color: white;
+    color: black;
+    border: none;
+}
+.submitButton{
+    background: black;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    text-transform: uppercase;
+  }
+
+  .inputMessage{
+    width:100%;
+    background-color: white;
+    color: black;
+    border: none;
+    height: 300px;
+    flex-wrap: wrap;
+  }
+
+  .header{
+    font-weight: bold;
+    color: white;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .formHeader{
+    font-weight: bold;
+    color: white;
+    font-size: 30px;
+  }
+
+  .formHeaderContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    background-color: black;
+    margin-bottom: 20px;
+    width: 40%;
+  }
+
+  @media only screen and (max-width:1015px){
+    .topBox{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+    }
+
+  }
+
+  @media only screen and (max-width:448px){
+    .header{
+      font-size: 20px;
+      width: 100%;
+    }
+    .formHeader{
+      font-size: 14px;
+    }
+    
+  }
+
+  @media only screen and (max-width:750px){
+    .formHeader{
+      font-size: 20px;
+    }
+
+    .formHeaderContainer{
+      width: 100%;
+    }
+    
+  }
+
+  @media only screen and (max-width: 527px){
+    .input{
+      width: 300px;
+    }
+
+    .inputMessage{
+      width: 300px;
+    }
+  }
