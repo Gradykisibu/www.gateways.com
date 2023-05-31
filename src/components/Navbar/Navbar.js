@@ -15,6 +15,8 @@ import FadeMenu from "./Menu/Menu";
 import MoonLoader from "react-spinners/MoonLoader";
 import FavoriteContext from "../context/FavouriteContext";
 import { useTheme } from "../context/ThemeContext";
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import MarkChatUnreadOutlinedIcon from '@mui/icons-material/MarkChatUnreadOutlined';
 
 const Navbar = () => {
   const router = useRouter();
@@ -117,6 +119,20 @@ const Navbar = () => {
           <NotificationsOutlinedIcon />
           <Link href="upcoming" className="navLink">
             <p>Upcoming</p>
+          </Link>
+        </Box>
+
+        <Box className={styles.NavItem}>
+          <MarkChatUnreadOutlinedIcon />
+          <Link href="comments" className="navLink">
+            <p>Comments</p>
+          </Link>
+        </Box>
+
+        <Box className={styles.NavItem}>
+          <SettingsOutlinedIcon />
+          <Link href="settings" className="navLink">
+            <p>Settings</p>
           </Link>
         </Box>
 

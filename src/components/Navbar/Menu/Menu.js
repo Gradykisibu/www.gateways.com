@@ -12,12 +12,12 @@ import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import SettingsIcon from '@mui/icons-material/Settings';
+import MarkChatUnreadIcon from '@mui/icons-material/MarkChatUnread';
 import Link from "next/link";
 import { signOut } from "firebase/auth";
 import { useRouter } from "next/router";
 import { auth } from "@/Firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import MarkChatUnreadIcon from '@mui/icons-material/MarkChatUnread';
 
 export default function FadeMenu() {
   const [user, setUser] = React.useState({});

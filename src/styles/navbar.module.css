@@ -33,7 +33,7 @@
     align-items: center;
     justify-content: space-between;
     font-size: 15px;
-    width: 550px;
+    width: 750px;
     margin-right: 50px;
     z-index: 1000;
   }
@@ -72,13 +72,13 @@
     z-index: 1000;
   }
 
-  @media only screen and (max-width: 758px){
+  @media only screen and (max-width: 950px){
     .navUl{
       display: none;
     }
   }
 
-  @media only screen and (min-width: 758px){
+  @media only screen and (min-width: 950px){
     .sideIcon{
       display: none;
     }

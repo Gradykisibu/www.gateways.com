@@ -13,7 +13,8 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import MoonLoader from "react-spinners/MoonLoader";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const login = () => {
   const googleLogo = "https://www.jigsawplanet.com/John1333/Google-G-Logo-svg?rc=face";
@@ -28,10 +29,21 @@ const login = () => {
   const [loader, setLoader] = useState(false);
   const [color, setColor] = useState("#ffffff");
 
-  const handleSubmit = () => {
+  const handleError = () => {
+    toast.warning("Please fill in all fields", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     setLoader(true);
     if (!values.email || !values.password || !values.email.includes("@")) {
-      setErrorMsg("All fields to be field in !");
+      handleError();
       return;
     }
 
@@ -41,7 +53,7 @@ const login = () => {
       .then(async (res) => {
         setSubmitButtonDisabled(false);
         const user = res.user;
-        // console.log(user)
+ 
         await updateProfile(user, {
           displayName: values.displayName,
         });
@@ -51,7 +63,6 @@ const login = () => {
       .catch((err) => {
         setErrorMsg(err.message);
         setLoader(false);
-
       });
   };
 
@@ -65,7 +76,7 @@ const login = () => {
         console.log(user);
       })
       .catch((error) => {
-        console.log(error);
+       alert(error);
         setLoader(false)
       });
   };
