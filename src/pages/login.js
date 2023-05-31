@@ -19,7 +19,7 @@ const login = () => {
   const googleLogo = "https://www.jigsawplanet.com/John1333/Google-G-Logo-svg?rc=face";
   const router = useRouter();
   const [values, setValues] = useState({
-    name: "",
+    displayName: "",
     email: "",
     password: "",
   });
@@ -43,7 +43,7 @@ const login = () => {
         const user = res.user;
         // console.log(user)
         await updateProfile(user, {
-          displayName: values.name,
+          displayName: values.displayName,
         });
         router.push("/");
         setLoader(false);
