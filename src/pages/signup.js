@@ -13,6 +13,8 @@ import { useRouter } from "next/router";
 import { Box, Button, FormControl, FormLabel, TextField } from "@mui/material";
 import Link from "next/link";
 import MoonLoader from "react-spinners/MoonLoader";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const signup = () => {
   const router = useRouter();
@@ -21,20 +23,49 @@ const signup = () => {
     email: "",
     password: "",
   });
+  const [ googleError, setGoogleError ] = useState("")
   const [errorMsg, setErrorMsg] = useState("");
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
   const [loader, setLoader] = useState(false);
   const [color, setColor] = useState("#ffffff");
   const googleLogo = "https://www.jigsawplanet.com/John1333/Google-G-Logo-svg?rc=face";
 
-  const handleSubmit = () => {
+  const handleWarning = (err) => {
+    toast.warning((err), {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+    });
+  };
+
+  const handleGoogleError = () => {
+    toast.warning("Network Error please check connection", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+    });
+  };
+
+  const handleError = () => {
+    toast.warning("Please fill in all fields", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+    });
+  };
+
+  const handleSubmit = (e) => {
+   e.preventDefault();
+
     setLoader(true);
     if (!values.displayName || !values.email) {
-      setErrorMsg("All fields to be field in !");
+      handleError();
       setLoader(false);
       return;
     }
-
     setErrorMsg("");
     setSubmitButtonDisabled(true);
     createUserWithEmailAndPassword(auth, values.email, values.password)
@@ -48,7 +79,7 @@ const signup = () => {
         router.push("/");
       })
       .catch((err) => {
-        setErrorMsg(err.message);
+        alert(err)
       });
     setLoader(false);
   };
@@ -71,7 +102,7 @@ const signup = () => {
         router.push("/");
       })
       .catch((error) => {
-        console.log(error);
+        handleGoogleError()
       });
   };
   
@@ -79,6 +110,7 @@ const signup = () => {
   return (
     <Box className={styles.overLay}>
       <Box className={styles.mainContainer}>
+      <ToastContainer />
         <Box className={styles.container}>
           <form onSubmit={handleSubmit} className={styles.innerBox}>
             <h1 className={styles.heading}>SIGNUP</h1>
