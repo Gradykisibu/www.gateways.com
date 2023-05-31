@@ -6,6 +6,8 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "@/Firebase/firebase";
 import { auth } from "@/Firebase/firebase";
 import { useRouter } from "next/router";
 import { Box, Button, FormControl, FormLabel, TextField } from "@mui/material";
@@ -15,7 +17,7 @@ import MoonLoader from "react-spinners/MoonLoader";
 const signup = () => {
   const router = useRouter();
   const [values, setValues] = useState({
-    name: "",
+    displayName: "",
     email: "",
     password: "",
   });
@@ -27,7 +29,7 @@ const signup = () => {
 
   const handleSubmit = () => {
     setLoader(true);
-    if (!values.name || !values.email) {
+    if (!values.displayName || !values.email) {
       setErrorMsg("All fields to be field in !");
       setLoader(false);
       return;
@@ -40,8 +42,9 @@ const signup = () => {
         setSubmitButtonDisabled(false);
         const user = res.user;
         await updateProfile(user, {
-          displayName: values.name,
+          displayName: values.displayName,
         });
+        await addDoc(collection(db, "users"), {values});
         router.push("/");
       })
       .catch((err) => {
@@ -54,11 +57,18 @@ const signup = () => {
   const provider = new GoogleAuthProvider();
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider)
-      .then((result) => {
+      .then(async (result) => {
         // const credential = GoogleAuthProvider.credentialFromResult(result);
         const user = result.user;
+        const displayName = user.displayName;
+        const email = user.email;
+        const uid = user.uid;
+        await addDoc(collection(db, "users"), {
+          displayName, 
+          email,
+          uid,
+        });
         router.push("/");
-        console.log(user);
       })
       .catch((error) => {
         console.log(error);

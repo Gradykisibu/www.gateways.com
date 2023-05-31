@@ -101,24 +101,6 @@ export default function Upcoming() {
                   {upcoming.description}
                 </Typography>
               </CardContent>
-              <CardActions disableSpacing>
-                <IconButton aria-label="share">
-                  <ShareIcon />
-                </IconButton>
-                <ExpandMore
-                  expand={expanded}
-                  onClick={() => handleExpandClick(upcoming.title)}
-                  aria-expanded={expanded}
-                  aria-label="show more"
-                >
-                  <ExpandMoreIcon />
-                </ExpandMore>
-              </CardActions>
-              <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <CardContent>
-                  <Typography paragraph>{upcoming.about}</Typography>
-                </CardContent>
-              </Collapse>
             </Card>
           );
         })}
