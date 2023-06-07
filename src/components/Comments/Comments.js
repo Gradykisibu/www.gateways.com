@@ -25,7 +25,7 @@ const Comments = () => {
 
   useEffect(() => {
     onAuthStateChanged(auth, (data) => {
-      setUser(data.displayName);
+      setUser(data.email);
     });
   }, []);
 

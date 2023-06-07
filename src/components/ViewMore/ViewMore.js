@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Box, Button } from "@mui/material";
 import styles from "../../styles/main.module.css";
+import style from "../../styles/banner.module.css";
 import { db } from "@/Firebase/firebase";
 import { query, collection, onSnapshot, doc } from "firebase/firestore";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
@@ -12,10 +13,10 @@ import { AuthContext } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
 import { useRouter } from "next/router";
 
-const Main = () => {
+const ViewMore = () => {
   const [favourite, setFavourite] = useState(false);
   const { addToFavourite } = useContext(FavoriteContext);
-  const { searchFilter, vacationData, setVacationData } =
+  const { searchFilter, vacationData, setVacationData, setSearchFilter } =
     useContext(AuthContext);
   const darkTheme = useTheme();
   const router = useRouter();
@@ -32,41 +33,32 @@ const Main = () => {
     return () => unsub();
   }, []);
 
-
   return (
     <Box sx={{ background: darkTheme && "black", padding: "10px" }}>
       <Box className={styles.header}>
-        <h1 className={styles.headerText}>Our popular destinations</h1>
+        <h1 className={styles.headerText}>Live vacations</h1>
       </Box>
 
       <Box
         sx={{
+          marginTop: "20px",
           width: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          marginTop: "10px",
-          zIndex:"1000px"
         }}
       >
-
-        <Link href={"/viewMore"}>
-        <Box
-          sx={{
-            width: "200px",
-            border:darkTheme ? "1px solid white" : "1px solid black",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: "5px",
-            textTransform: "uppercase",
-            cursor:"pointer",
-            color: darkTheme ? "white" : "black",
+        <input
+          style={{
+            width: "60%",
+            border: "2px solid black",
+            paddingLeft: "10px",
+            height:"40px"
           }}
-        >
-          view more
-        </Box>
-        </Link>
+          onChange={(e) => setSearchFilter(e.target.value)}
+          type="text"
+          placeholder="Search vacation..."
+        />
       </Box>
 
       <Box className={styles.cardContainer}>
@@ -77,9 +69,6 @@ const Main = () => {
               : vacation.destTitle.toLowerCase().includes(searchFilter);
           })
           .map((vacation, index) => {
-            if (index >= 6) {
-              return;
-            }
             return (
               <Box
                 className={styles.singleDestination}
@@ -138,10 +127,8 @@ const Main = () => {
             );
           })}
       </Box>
-
-     
     </Box>
   );
 };
 
-export default Main;
+export default ViewMore;

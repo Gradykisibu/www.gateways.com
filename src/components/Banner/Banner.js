@@ -11,7 +11,7 @@ const Banner = () => {
 
   const [ price, setPrice ] = React.useState();
   const { setSearchFilter , user} = useContext(AuthContext);
-  const currentUser = user?.displayName
+  const currentUser = user?.email
 
 
   return (
@@ -32,7 +32,8 @@ const Banner = () => {
 
         <Box className={styles.cardDivGrid}>
           <Box className={styles.UserName}>
-            WELCOME TO GATEWAYS {currentUser}
+            <p>WELCOME TO GATEWAYS </p>
+            <p>{currentUser}</p>
           </Box>
 
             <Box className={styles.SearchInputs}>
