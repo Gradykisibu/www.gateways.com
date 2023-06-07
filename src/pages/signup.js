@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from "../styles/signUp.module.css";
 import {
   createUserWithEmailAndPassword,
-  updateProfile,
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
@@ -10,7 +9,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/Firebase/firebase";
 import { auth } from "@/Firebase/firebase";
 import { useRouter } from "next/router";
-import { Box, Button, FormControl, FormLabel, TextField } from "@mui/material";
+import { Box,FormControl, FormLabel, TextField } from "@mui/material";
 import Link from "next/link";
 import MoonLoader from "react-spinners/MoonLoader";
 import { ToastContainer, toast } from "react-toastify";
@@ -23,12 +22,13 @@ const signup = () => {
     email: "",
     password: "",
   });
-  const [ googleError, setGoogleError ] = useState("")
   const [errorMsg, setErrorMsg] = useState("");
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
   const [loader, setLoader] = useState(false);
   const [color, setColor] = useState("#ffffff");
   const googleLogo = "https://www.jigsawplanet.com/John1333/Google-G-Logo-svg?rc=face";
+  const [ green, setGreen ] = useState("rgb(0, 175, 0)");
+  const [ red, setRed ] = useState("rgb(255, 0, 0)")
 
   const handleWarning = (err) => {
     toast.warning((err), {
@@ -72,16 +72,13 @@ const signup = () => {
       .then(async (res) => {
         setSubmitButtonDisabled(false);
         const user = res.user;
-        await updateProfile(user, {
-          displayName: values.displayName,
-        });
-        await addDoc(collection(db, "users"), {values});
+        console.log(user)
         router.push("/");
       })
       .catch((err) => {
         alert(err)
+        setLoader(false);
       });
-    setLoader(false);
   };
 
 
@@ -114,13 +111,13 @@ const signup = () => {
         <Box className={styles.container}>
           <form onSubmit={handleSubmit} className={styles.innerBox}>
             <h1 className={styles.heading}>SIGNUP</h1>
-
+            
             <Box className={styles.inputContainer}>
               <FormControl>
                 <FormLabel>Name</FormLabel>
                 <TextField
                   onChange={(e) => {
-                    setValues((prev) => ({ ...prev, name: e.target.value }));
+                    setValues((prev) => ({ ...prev, displayName: e.target.value }));
                   }}
                   size="small"
                   className={styles.input}

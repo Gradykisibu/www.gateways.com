@@ -59,7 +59,7 @@ export default function VerticalTabs() {
 
   React.useEffect(() => {
     onAuthStateChanged(auth, (data) => {
-      setUser(data.displayName);
+      setUser(data.email);
     });
   }, []);
 
