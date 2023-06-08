@@ -2,12 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Box, Button } from "@mui/material";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/Firebase/firebase";
-import {
-  addDoc,
-  collection,
-  query,
-  serverTimestamp,
-} from "firebase/firestore";
+import { addDoc, collection, query, serverTimestamp } from "firebase/firestore";
 import { db } from "@/Firebase/firebase";
 import SendIcon from "@mui/icons-material/Send";
 import { onSnapshot } from "firebase/firestore";
@@ -61,7 +56,6 @@ const Comments = () => {
     }
   };
 
-
   return (
     <Box
       sx={{
@@ -86,14 +80,14 @@ const Comments = () => {
       <Box
         sx={{
           border: darkTheme ? "1px solid white" : "1px solid black",
-          color:darkTheme ? "#fff" : "#000",
+          color: darkTheme ? "#fff" : "#000",
           flexWrap: "wrap",
           width: "80%",
           height: "auto",
           fontWeight: "light",
           textTransform: "capitalize",
           padding: "10px",
-          marginTop:"10px"
+          marginTop: "10px",
         }}
       >
         <h1>
@@ -144,14 +138,14 @@ const Comments = () => {
             />
             <button
               style={{
-                color:darkTheme ? "#fff" : "#000",
-                background:darkTheme ? "#000" : "#fff",
+                color: darkTheme ? "#fff" : "#000",
+                background: darkTheme ? "#000" : "#fff",
                 width: "120px",
                 marginTop: "20px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontWeight:"bold",
+                fontWeight: "bold",
               }}
               type="submit"
             >
@@ -172,7 +166,7 @@ const Comments = () => {
             <Box key={index}>
               <Box
                 sx={{
-                  background:darkTheme ? "white" : "white",
+                  background: darkTheme ? "white" : "white",
                   mt: "10px",
                   borderRadius: "5px",
                   padding: "10px",
@@ -190,18 +184,25 @@ const Comments = () => {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "flex-start",
-                      color:darkTheme && "black",
+                      color: darkTheme && "black",
                     }}
                   >
-                    <p>Comment From: </p>
                     <p
                       style={{
                         marginLeft: "10px",
                         fontWeight: "bold",
                         textTransform: "capitalize",
+                        width: "30px",
+                        height: "30px",
+                        borderRadius: "50px",
+                        display:"flex", 
+                        alignItems:"center",
+                        justifyContent:"center",
+                        background:darkTheme ? "white" : "black",
+                        color:darkTheme ? "black" : "white"
                       }}
                     >
-                      {data.user}
+                      {data.user[0]}
                     </p>
                   </Box>
                 </Box>
@@ -217,8 +218,8 @@ const Comments = () => {
                   <Box
                     sx={{
                       width: "100%",
-                      background:darkTheme ? "grey" : "lightgrey" ,
-                      color:darkTheme && "white",
+                      background: darkTheme ? "grey" : "lightgrey",
+                      color: darkTheme && "white",
                       borderRadius: "5px",
                       marginTop: "10px",
                       padding: "10px",

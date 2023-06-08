@@ -157,20 +157,20 @@ export default function VerticalTabs() {
               flexDirection: "column",
             }}
           >
-            {/* <Tab label="User Info" {...a11yProps(0)} /> */}
-            <Tab label="Theme" {...a11yProps(0)} />
-            <Tab label="Delete Account" {...a11yProps(1)} />
+            <Tab label="User Info" {...a11yProps(0)} />
+            <Tab label="Theme" {...a11yProps(1)} />
+            <Tab label="Delete Account" {...a11yProps(2)} />
           </Tabs>
         </Box>
       ) : (
         <Box>
-          {/* <TabPanel value={value} index={0}>
-            <UserInfor />
-          </TabPanel> */}
           <TabPanel value={value} index={0}>
-            <Theme />
+            <UserInfor />
           </TabPanel>
           <TabPanel value={value} index={1}>
+            <Theme />
+          </TabPanel>
+          <TabPanel value={value} index={2}>
             <DeleteAccount />
           </TabPanel>
         </Box>
