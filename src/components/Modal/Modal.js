@@ -313,7 +313,7 @@ export default function TransitionsModal(props) {
                         }
                       >
                         {loading ? (
-                          <MoonLoader style={{ fontSize: "small" }} />
+                          <MoonLoader style={{ fontSize: "small", border:"1px solid red" }} />
                         ) : (
                           "Submit"
                         )}

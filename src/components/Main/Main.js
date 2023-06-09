@@ -74,7 +74,7 @@ const Main = () => {
           .filter((vacation) => {
             return searchFilter.toLowerCase() === ""
               ? vacation
-              : vacation.destTitle.toLowerCase().includes(searchFilter);
+              : vacation.location.toLowerCase().includes(searchFilter);
           })
           .map((vacation, index) => {
             if (index >= 8) {
