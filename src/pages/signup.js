@@ -27,17 +27,6 @@ const signup = () => {
   const [loader, setLoader] = useState(false);
   const [color, setColor] = useState("#ffffff");
   const googleLogo = "https://www.jigsawplanet.com/John1333/Google-G-Logo-svg?rc=face";
-  const [ green, setGreen ] = useState("rgb(0, 175, 0)");
-  const [ red, setRed ] = useState("rgb(255, 0, 0)")
-
-  const handleWarning = (err) => {
-    toast.warning((err), {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-    });
-  };
 
   const handleGoogleError = () => {
     toast.warning("Network Error please check connection", {
