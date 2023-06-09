@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [ searchFilter, setSearchFilter ] = useState("");
   const [vacationData, setVacationData] = useState([]);
   const [newsData, setNewsData] = useState([]);
+  const [ reservationData , setReservationData ] = useState([]);
 
   useEffect(() => {
    onAuthStateChanged(auth, (data) => {
@@ -26,6 +27,8 @@ const payload = {
     setVacationData,
     newsData,
     setNewsData,
+    reservationData,
+   setReservationData 
 }
 
   return (

@@ -17,6 +17,7 @@ import PublicIcon from "@mui/icons-material/Public";
 import PsychologyAltIcon from "@mui/icons-material/PsychologyAlt";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import CancelIcon from "@mui/icons-material/Cancel";
+import TransitionsModal from "@/components/Modal/Modal";
 
 const Details = () => {
   const { vacationData } = useContext(AuthContext);
@@ -24,7 +25,7 @@ const Details = () => {
   const router = useRouter();
   const id = router.query.id;
   const currentData = vacationData.filter((item) => item.id == id);
-  
+
   const getCustomData = () => {
     setSingleData(currentData);
   };
@@ -32,9 +33,6 @@ const Details = () => {
   useEffect(() => {
     getCustomData();
   }, []);
-
-
-
 
   return (
     <Box>
@@ -580,8 +578,32 @@ const Details = () => {
                 </Box>
               </Box>
 
+              <Box
+                sx={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginTop: "20px",
+                }}
+              >
+                <Box
+                  sx={{
+                    width: "40%",
+                    background: "white",
+                    color: "black",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderRadius:"5px"
+                  }}
+                >
+                  <TransitionsModal hotel={Data.destTitle}/>
+                </Box>
+              </Box>
+
               {/* Location Google Map Iframe View */}
-              <Box sx={{width:"100%", padding:"10px"}}>
+              <Box sx={{ width: "100%", padding: "10px" }}>
                 <Box className={styles.descriptionTitle}>
                   <h1>Map Location</h1>
                 </Box>

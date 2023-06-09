@@ -1,0 +1,128 @@
+.overLay{
+    height: 100vh;
+    width: 100%;
+    background-image: url('/Travel.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .mainContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:rgba(0, 0, 0, 0.6);
+    height: 100vh;
+    width: 100%;
+  }
+  
+  .Resetcontainer {
+    flex-direction: column;
+    height: 300px;
+    width: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.75);
+    opacity: 0.7;
+  }
+  
+  .innerBox {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  
+  .ResetinnerBox {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  
+  .inputContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 240px;
+    margin-top: 5px;
+    padding-top: 270px;
+    overflow-y: scroll;
+  
+  }
+  
+  .ResetinputContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100px;
+  }
+  
+  .heading {
+    width: 80%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     background-color: black;
+    border-radius: 10px;
+    margin-top: 20px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .footer{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .Resetfooter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+  }
+  
+  .signupButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+      
+  }
+   .signupButton:hover{
+    border: 1px solid black;
+    color: black;
+    background-color: transparent;
+    cursor: pointer;
+   }
+  
+   .login{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+   }
+  
+   @media only screen and (max-width: 414px){
+    
+    .container{
+      width: 350px;
+  
+    }
+  
+    .Resetcontainer{
+      width: 350px;
+    }
+   }
+  
+   .GotoLogin{
+    margin-top: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
