@@ -14,7 +14,6 @@ import { useRouter } from "next/router";
 
 const bookingConfirmed = () => {
   const { reservationData } = React.useContext(AuthContext);
-  const [redirecting, setRedirecting] = React.useState(false);
 
   const router = useRouter();
   console.log(reservationData);

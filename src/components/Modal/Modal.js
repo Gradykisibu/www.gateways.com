@@ -11,6 +11,9 @@ import styles from "../../styles/reserveModal.module.css";
 import { useRouter } from "next/router";
 import { MoonLoader } from "react-spinners";
 import { AuthContext } from "../context/AuthContext";
+import { onSnapshot, addDoc, collection, query } from "firebase/firestore";
+import { db } from "@/Firebase/firebase";
+
 
 const style = {
   position: "absolute",
@@ -45,7 +48,7 @@ export default function TransitionsModal(props) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     if (
@@ -55,6 +58,18 @@ export default function TransitionsModal(props) {
       reservation.adults <= 6 &&
       reservation.children <= 5
     ) {
+      await addDoc(collection(db, "bookings"), {
+        name: reservation.name,
+        email: reservation.email,
+        checkInTime: reservation.checkInTime,
+        checkOutTime: reservation.checkOutTime,
+        CheckInDate: reservation.CheckInDate,
+        CheckOutDate: reservation.checkOutTime,
+        rooms: reservation.rooms,
+        adults: reservation.adults,
+        children: reservation.children,
+        hotel: props.hotel,
+      });
       setReservationData(reservation);
       router.push("/bookingConfirmed");
     } else {
